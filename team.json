@@ -1,0 +1,27 @@
+{
+    "team_number": "T0047",
+    "group_lead": {
+        "name": "Dakshesh Sharma",
+        "enrollment_no": "2501010130",
+        "github": "https://github.com/daksheshsharma2409"
+    },
+    "members": [
+        {
+            "name": "Dhruv Kumar Sinha",
+            "enrollment_no": "2501010144",
+            "github": "https://github.com/2217dks"
+        },
+        {
+            "name": "Ketan Agarwal",
+            "enrollment_no": "2501010218",
+            "github": "https://github.com/k3tan7"
+        },
+        {
+            "name": "Himanshi Bishnoi",
+            "enrollment_no": "2501010185",
+            "github": "https://github.com/himanshibishnoi"
+        }
+    ],
+    "postgres_version": "18.6",
+    "laptop_used_for_benchmarks": "MacBook Pro M4"
+}
