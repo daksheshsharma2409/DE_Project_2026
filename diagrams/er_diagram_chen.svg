@@ -1,0 +1,149 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="1030" viewBox="0 0 1400 1030">
+  <style>
+    text { font-family: Arial, sans-serif; fill: #172033; }
+    .title { font-size: 30px; font-weight: 700; }
+    .sub { font-size: 15px; fill: #526078; }
+    .entity { fill: #f7fbff; stroke: #2363a5; stroke-width: 2; }
+    .relation { fill: #fff7e6; stroke: #b67a15; stroke-width: 2; }
+    .line { stroke: #526078; stroke-width: 2; }
+    .entity-name { font-size: 14px; font-weight: 700; text-anchor: middle; }
+    .rel-name { font-size: 13px; font-weight: 700; text-anchor: middle; }
+    .card { font-size: 12px; font-weight: 700; fill: #34445d; }
+    .note { font-size: 13px; fill: #526078; }
+  </style>
+  <text x="50" y="46" class="title">Netflix Streaming Database - Chen ER Diagram</text>
+  <text x="50" y="72" class="sub">Rectangles are entities, diamonds are relationships, and labels at the ends show cardinality.</text>
+  <text x="50" y="92" class="sub">The associative entities make the database tables visible; full attributes and constraints are in the schema design.</text>
+
+  <g transform="translate(0 112)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">PLANS</text>
+    <text class="rel-name" x="640" y="33">subscribes</text>
+    <text class="entity-name" x="1120" y="34">ACCOUNTS</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 176)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">ACCOUNTS</text>
+    <text class="rel-name" x="640" y="33">contains</text>
+    <text class="entity-name" x="1120" y="34">PROFILES</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 240)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">TITLES</text>
+    <text class="rel-name" x="640" y="33">has episodes</text>
+    <text class="entity-name" x="1120" y="34">EPISODES</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 304)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">TITLES</text>
+    <text class="rel-name" x="640" y="33">tagged in</text>
+    <text class="entity-name" x="1120" y="34">TITLE_GENRES</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 368)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">GENRES</text>
+    <text class="rel-name" x="640" y="33">classifies</text>
+    <text class="entity-name" x="1120" y="34">TITLE_GENRES</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 432)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">PROFILES</text>
+    <text class="rel-name" x="640" y="33">plays</text>
+    <text class="entity-name" x="1120" y="34">VIEWING_ACTIVITY</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 496)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">TITLES</text>
+    <text class="rel-name" x="640" y="33">is watched in</text>
+    <text class="entity-name" x="1120" y="34">VIEWING_ACTIVITY</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 560)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">EPISODES</text>
+    <text class="rel-name" x="640" y="33">may appear in</text>
+    <text class="entity-name" x="1120" y="34">VIEWING_ACTIVITY</text>
+    <text class="card" x="355" y="22">0..1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 624)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">PROFILES</text>
+    <text class="rel-name" x="640" y="33">rates</text>
+    <text class="entity-name" x="1120" y="34">RATINGS</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 688)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">TITLES</text>
+    <text class="rel-name" x="640" y="33">receives</text>
+    <text class="entity-name" x="1120" y="34">RATINGS</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 752)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">PROFILES</text>
+    <text class="rel-name" x="640" y="33">saves</text>
+    <text class="entity-name" x="1120" y="34">MY_LIST</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 816)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">TITLES</text>
+    <text class="rel-name" x="640" y="33">appears in</text>
+    <text class="entity-name" x="1120" y="34">MY_LIST</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <g transform="translate(0 880)">
+    <path class="line" d="M340 28 H520 M760 28 H960"/>
+    <rect class="entity" x="80" y="6" width="260" height="44"/>
+    <polygon class="relation" points="640,0 760,28 640,56 520,28"/>
+    <rect class="entity" x="960" y="6" width="320" height="44"/>
+    <text class="entity-name" x="210" y="34">ACCOUNTS</text>
+    <text class="rel-name" x="640" y="33">receives</text>
+    <text class="entity-name" x="1120" y="34">INVOICES</text>
+    <text class="card" x="355" y="22">1</text><text class="card" x="920" y="22">N</text>
+  </g>
+  <text x="50" y="968" class="note">For titles and genres, the associative table represents the many-to-many relationship. The database diagram also shows optional movie episodes.</text>
+</svg>

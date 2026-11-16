@@ -1,0 +1,101 @@
+erDiagram
+    PLANS ||--o{ ACCOUNTS : "subscribes"
+    ACCOUNTS ||--o{ PROFILES : "contains"
+    TITLES ||--o{ EPISODES : "has"
+    TITLES ||--o{ TITLE_GENRES : "tagged with"
+    GENRES ||--o{ TITLE_GENRES : "classifies"
+    PROFILES ||--o{ VIEWING_ACTIVITY : "plays"
+    TITLES ||--o{ VIEWING_ACTIVITY : "watched in"
+    EPISODES o|--o{ VIEWING_ACTIVITY : "episode of"
+    PROFILES ||--o{ RATINGS : "rates"
+    TITLES ||--o{ RATINGS : "receives"
+    PROFILES ||--o{ MY_LIST : "saves"
+    TITLES ||--o{ MY_LIST : "saved in"
+    ACCOUNTS ||--o{ INVOICES : "receives"
+
+    PLANS {
+        int plan_id PK
+        string plan_name UK
+        decimal monthly_price_inr
+        int max_streams
+        string max_resolution
+        boolean has_ads
+    }
+    ACCOUNTS {
+        int account_id PK
+        string email UK
+        string phone
+        string country_code
+        int plan_id FK
+        date signup_date
+        string status
+        date cancelled_on
+        date next_billing_date
+    }
+    PROFILES {
+        int profile_id PK
+        int account_id FK
+        string profile_name
+        boolean is_kids
+        string maturity_limit
+        string language
+        datetime created_at
+    }
+    TITLES {
+        int title_id PK
+        string title_type
+        string name
+        int release_year
+        string maturity_rating
+        string original_language
+        int runtime_min
+        boolean is_netflix_original
+        date added_on
+        date leaving_on
+    }
+    GENRES {
+        int genre_id PK
+        string genre_name UK
+    }
+    TITLE_GENRES {
+        int title_id PK
+        int genre_id PK
+    }
+    EPISODES {
+        int episode_id PK
+        int title_id FK
+        int season_no
+        int episode_no
+        string episode_title
+        int runtime_min
+        date release_date
+    }
+    VIEWING_ACTIVITY {
+        int view_id PK
+        int profile_id FK
+        int title_id FK
+        int episode_id FK
+        datetime started_at
+        int duration_watched_sec
+        string device_type
+        boolean completed
+    }
+    RATINGS {
+        int profile_id PK
+        int title_id PK
+        string rating
+        datetime rated_at
+    }
+    MY_LIST {
+        int profile_id PK
+        int title_id PK
+        datetime added_at
+    }
+    INVOICES {
+        int invoice_id PK
+        int account_id FK
+        date billing_period_start
+        decimal amount_inr
+        string status
+        datetime paid_at
+    }
