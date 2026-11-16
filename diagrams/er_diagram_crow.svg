@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="1070" viewBox="0 0 1600 1070">
+  <style>
+    text { font-family: Arial, sans-serif; fill: #172033; }
+    .title { font-size: 30px; font-weight: 700; }
+    .sub { font-size: 16px; fill: #526078; }
+    .entity { fill: #f7fbff; stroke: #2363a5; stroke-width: 2; rx: 10; }
+    .name { font-size: 17px; font-weight: 700; fill: #164b7d; }
+    .field { font-size: 13px; }
+    .edge { stroke: #526078; stroke-width: 2; fill: none; }
+    .card { font-size: 12px; font-weight: 700; fill: #34445d; }
+    .note { font-size: 13px; fill: #526078; }
+  </style>
+  <text x="42" y="46" class="title">Netflix Streaming Database - Crow's Foot ER Diagram</text>
+  <text x="42" y="72" class="sub">PK = primary key, FK = foreign key; endpoint labels show parent-to-child cardinality</text>
+
+  <!-- Relationship connectors are routed behind entity boxes. -->
+  <path class="edge" d="M280 170 H340"/>
+  <path class="edge" d="M580 170 H640"/>
+  <path class="edge" d="M760 520 V560 H1540 V450 H1520"/>
+  <path class="edge" d="M120 520 V610 H390 V690"/>
+  <path class="edge" d="M640 450 H580"/>
+  <path class="edge" d="M760 250 V320 H1380 V380"/>
+  <path class="edge" d="M1180 450 H1240"/>
+  <path class="edge" d="M820 520 V690"/>
+  <path class="edge" d="M640 200 H600 V630 H820 V690"/>
+  <path class="edge" d="M640 200 H610 V650 H460 V690"/>
+  <path class="edge" d="M700 520 H600 V660 H460 V690"/>
+  <path class="edge" d="M460 250 V300 H1300 V250"/>
+
+  <text x="289" y="159" class="card">1 : 0..*</text>
+  <text x="589" y="159" class="card">1 : 0..*</text>
+  <text x="790" y="322" class="card">1 : 0..*</text>
+  <text x="883" y="319" class="card">1 : 0..*</text>
+  <text x="208" y="602" class="card">1 : 0..*</text>
+  <text x="590" y="438" class="card">1 : 0..*</text>
+  <text x="1045" y="318" class="card">1 : 0..*</text>
+  <text x="1185" y="509" class="card">1 : 0..*</text>
+  <text x="1420" y="555" class="card">1 : 0..*</text>
+  <text x="836" y="590" class="card">1 : 0..*</text>
+  <text x="820" y="650" class="card">1 : 0..*</text>
+  <text x="475" y="645" class="card">1 : 0..*</text>
+  <text x="627" y="645" class="card">1 : 0..*</text>
+
+  <g transform="translate(40 110)">
+    <rect class="entity" width="240" height="140"/>
+    <text class="name" x="14" y="27">PLANS</text>
+    <text class="field" x="14" y="54">PK plan_id</text>
+    <text class="field" x="14" y="76">UK plan_name</text>
+    <text class="field" x="14" y="98">monthly_price_inr</text>
+    <text class="field" x="14" y="120">max_streams, max_resolution, has_ads</text>
+  </g>
+  <g transform="translate(340 110)">
+    <rect class="entity" width="240" height="140"/>
+    <text class="name" x="14" y="27">ACCOUNTS</text>
+    <text class="field" x="14" y="54">PK account_id</text>
+    <text class="field" x="14" y="76">FK plan_id</text>
+    <text class="field" x="14" y="98">UK email</text>
+    <text class="field" x="14" y="120">status, billing and cancellation dates</text>
+  </g>
+  <g transform="translate(640 110)">
+    <rect class="entity" width="240" height="140"/>
+    <text class="name" x="14" y="27">PROFILES</text>
+    <text class="field" x="14" y="54">PK profile_id</text>
+    <text class="field" x="14" y="76">FK account_id</text>
+    <text class="field" x="14" y="98">profile_name, is_kids</text>
+    <text class="field" x="14" y="120">maturity_limit, language, created_at</text>
+  </g>
+  <g transform="translate(1180 110)">
+    <rect class="entity" width="240" height="140"/>
+    <text class="name" x="14" y="27">INVOICES</text>
+    <text class="field" x="14" y="54">PK invoice_id</text>
+    <text class="field" x="14" y="76">FK account_id</text>
+    <text class="field" x="14" y="98">billing_period_start, amount_inr</text>
+    <text class="field" x="14" y="120">status, paid_at</text>
+  </g>
+  <g transform="translate(40 380)">
+    <rect class="entity" width="240" height="140"/>
+    <text class="name" x="14" y="27">GENRES</text>
+    <text class="field" x="14" y="54">PK genre_id</text>
+    <text class="field" x="14" y="76">UK genre_name</text>
+  </g>
+  <g transform="translate(340 380)">
+    <rect class="entity" width="240" height="140"/>
+    <text class="name" x="14" y="27">TITLE_GENRES</text>
+    <text class="field" x="14" y="54">PK, FK title_id</text>
+    <text class="field" x="14" y="76">PK, FK genre_id</text>
+  </g>
+  <g transform="translate(640 380)">
+    <rect class="entity" width="240" height="140"/>
+    <text class="name" x="14" y="27">TITLES</text>
+    <text class="field" x="14" y="54">PK title_id</text>
+    <text class="field" x="14" y="76">title_type, name, release_year</text>
+    <text class="field" x="14" y="98">maturity_rating, runtime_min</text>
+    <text class="field" x="14" y="120">original flag and catalogue dates</text>
+  </g>
+  <g transform="translate(940 380)">
+    <rect class="entity" width="240" height="140"/>
+    <text class="name" x="14" y="27">EPISODES</text>
+    <text class="field" x="14" y="54">PK episode_id</text>
+    <text class="field" x="14" y="76">FK title_id</text>
+    <text class="field" x="14" y="98">season_no, episode_no, runtime_min</text>
+    <text class="field" x="14" y="120">episode_title, release_date</text>
+  </g>
+  <g transform="translate(1240 380)">
+    <rect class="entity" width="280" height="140"/>
+    <text class="name" x="14" y="27">VIEWING_ACTIVITY</text>
+    <text class="field" x="14" y="54">PK view_id</text>
+    <text class="field" x="14" y="76">FK profile_id, title_id, episode_id</text>
+    <text class="field" x="14" y="98">started_at, duration_watched_sec</text>
+    <text class="field" x="14" y="120">device_type, completed</text>
+  </g>
+  <g transform="translate(340 690)">
+    <rect class="entity" width="240" height="140"/>
+    <text class="name" x="14" y="27">RATINGS</text>
+    <text class="field" x="14" y="54">PK, FK profile_id</text>
+    <text class="field" x="14" y="76">PK, FK title_id</text>
+    <text class="field" x="14" y="98">rating, rated_at</text>
+  </g>
+  <g transform="translate(700 690)">
+    <rect class="entity" width="240" height="140"/>
+    <text class="name" x="14" y="27">MY_LIST</text>
+    <text class="field" x="14" y="54">PK, FK profile_id</text>
+    <text class="field" x="14" y="76">PK, FK title_id</text>
+    <text class="field" x="14" y="98">added_at</text>
+  </g>
+  <text x="42" y="890" class="note">Nullable episode_id is allowed for movies; when populated, the database checks that its episode belongs to the same title.</text>
+  <text x="42" y="914" class="note">Composite key pairs are shown with PK on both participating columns. The schema design document lists all remaining columns and constraints.</text>
+</svg>
