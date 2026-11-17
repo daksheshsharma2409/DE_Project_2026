@@ -1,0 +1,39 @@
+=== R24 run 1 ===
+Sort  (cost=1585.52..1585.53 rows=3 width=22) (actual time=1.868..1.868 rows=4.00 loops=1)
+  Sort Key: created_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=651
+  ->  Seq Scan on profiles  (cost=0.00..1585.50 rows=3 width=22) (actual time=0.109..1.862 rows=4.00 loops=1)
+        Filter: (account_id = 1409)
+        Rows Removed by Filter: 74996
+        Buffers: shared hit=648
+Planning:
+  Buffers: shared hit=91
+Planning Time: 0.144 ms
+Execution Time: 1.888 ms
+=== R24 run 2 ===
+Sort  (cost=1585.52..1585.53 rows=3 width=22) (actual time=1.853..1.853 rows=4.00 loops=1)
+  Sort Key: created_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=651
+  ->  Seq Scan on profiles  (cost=0.00..1585.50 rows=3 width=22) (actual time=0.110..1.846 rows=4.00 loops=1)
+        Filter: (account_id = 1409)
+        Rows Removed by Filter: 74996
+        Buffers: shared hit=648
+Planning:
+  Buffers: shared hit=91
+Planning Time: 0.145 ms
+Execution Time: 1.873 ms
+=== R24 run 3 ===
+Sort  (cost=1585.52..1585.53 rows=3 width=22) (actual time=1.816..1.817 rows=4.00 loops=1)
+  Sort Key: created_at
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=651
+  ->  Seq Scan on profiles  (cost=0.00..1585.50 rows=3 width=22) (actual time=0.106..1.810 rows=4.00 loops=1)
+        Filter: (account_id = 1409)
+        Rows Removed by Filter: 74996
+        Buffers: shared hit=648
+Planning:
+  Buffers: shared hit=91
+Planning Time: 0.135 ms
+Execution Time: 1.835 ms

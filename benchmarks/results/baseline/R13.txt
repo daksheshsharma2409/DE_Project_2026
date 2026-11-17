@@ -1,0 +1,42 @@
+=== R13 run 1 ===
+Index Scan using episodes_position_unique on episodes e  (cost=4105.30..4143.41 rows=9 width=8) (actual time=17.627..17.628 rows=0.00 loops=1)
+  Index Cond: (title_id = 2523)
+  Filter: (NOT (ANY (episode_id = (hashed SubPlan 1).col1)))
+  Rows Removed by Filter: 31
+  Index Searches: 1
+  Buffers: shared hit=1603
+  SubPlan 1
+    ->  Seq Scan on viewing_activity v  (cost=0.00..3604.01 rows=200401 width=4) (actual time=0.006..7.199 rows=200401.00 loops=1)
+          Buffers: shared hit=1600
+Planning:
+  Buffers: shared hit=130
+Planning Time: 0.271 ms
+Execution Time: 17.659 ms
+=== R13 run 2 ===
+Index Scan using episodes_position_unique on episodes e  (cost=4105.30..4143.41 rows=9 width=8) (actual time=17.625..17.626 rows=0.00 loops=1)
+  Index Cond: (title_id = 2523)
+  Filter: (NOT (ANY (episode_id = (hashed SubPlan 1).col1)))
+  Rows Removed by Filter: 31
+  Index Searches: 1
+  Buffers: shared hit=1603
+  SubPlan 1
+    ->  Seq Scan on viewing_activity v  (cost=0.00..3604.01 rows=200401 width=4) (actual time=0.005..7.202 rows=200401.00 loops=1)
+          Buffers: shared hit=1600
+Planning:
+  Buffers: shared hit=130
+Planning Time: 0.246 ms
+Execution Time: 17.652 ms
+=== R13 run 3 ===
+Index Scan using episodes_position_unique on episodes e  (cost=4105.30..4143.41 rows=9 width=8) (actual time=18.387..18.388 rows=0.00 loops=1)
+  Index Cond: (title_id = 2523)
+  Filter: (NOT (ANY (episode_id = (hashed SubPlan 1).col1)))
+  Rows Removed by Filter: 31
+  Index Searches: 1
+  Buffers: shared hit=1603
+  SubPlan 1
+    ->  Seq Scan on viewing_activity v  (cost=0.00..3604.01 rows=200401 width=4) (actual time=0.014..7.239 rows=200401.00 loops=1)
+          Buffers: shared hit=1600
+Planning:
+  Buffers: shared hit=130
+Planning Time: 0.280 ms
+Execution Time: 18.423 ms

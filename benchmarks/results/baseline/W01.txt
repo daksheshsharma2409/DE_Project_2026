@@ -1,0 +1,42 @@
+=== W01 run 1 ===
+Insert on viewing_activity  (cost=0.29..8.31 rows=0 width=0) (actual time=0.109..0.109 rows=0.00 loops=1)
+  Buffers: shared hit=36
+  ->  Index Scan using episodes_position_unique on episodes  (cost=0.29..8.31 rows=1 width=67) (actual time=0.019..0.019 rows=1.00 loops=1)
+        Index Cond: ((title_id = 2909) AND (season_no = 1) AND (episode_no = 5))
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=126
+Planning Time: 0.230 ms
+Trigger for constraint viewing_activity_profile_id_fkey: time=0.124 calls=1
+Trigger for constraint viewing_activity_title_id_fkey: time=0.079 calls=1
+Trigger for constraint viewing_episode_matches_title: time=0.027 calls=1
+Execution Time: 0.352 ms
+=== W01 run 2 ===
+Insert on viewing_activity  (cost=0.29..8.31 rows=0 width=0) (actual time=0.108..0.109 rows=0.00 loops=1)
+  Buffers: shared hit=37 dirtied=1
+  ->  Index Scan using episodes_position_unique on episodes  (cost=0.29..8.31 rows=1 width=67) (actual time=0.016..0.016 rows=1.00 loops=1)
+        Index Cond: ((title_id = 2909) AND (season_no = 1) AND (episode_no = 5))
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=126
+Planning Time: 0.367 ms
+Trigger for constraint viewing_activity_profile_id_fkey: time=0.128 calls=1
+Trigger for constraint viewing_activity_title_id_fkey: time=0.077 calls=1
+Trigger for constraint viewing_episode_matches_title: time=0.027 calls=1
+Execution Time: 0.355 ms
+=== W01 run 3 ===
+Insert on viewing_activity  (cost=0.29..8.31 rows=0 width=0) (actual time=0.096..0.096 rows=0.00 loops=1)
+  Buffers: shared hit=37 dirtied=1
+  ->  Index Scan using episodes_position_unique on episodes  (cost=0.29..8.31 rows=1 width=67) (actual time=0.014..0.014 rows=1.00 loops=1)
+        Index Cond: ((title_id = 2909) AND (season_no = 1) AND (episode_no = 5))
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=126
+Planning Time: 0.201 ms
+Trigger for constraint viewing_activity_profile_id_fkey: time=0.110 calls=1
+Trigger for constraint viewing_activity_title_id_fkey: time=0.074 calls=1
+Trigger for constraint viewing_episode_matches_title: time=0.026 calls=1
+Execution Time: 0.316 ms
