@@ -1,0 +1,42 @@
+=== W01 run 1 ===
+Insert on viewing_activity  (cost=0.29..8.31 rows=0 width=0) (actual time=0.158..0.158 rows=0.00 loops=1)
+  Buffers: shared hit=126 dirtied=1
+  ->  Index Scan using episodes_position_unique on episodes  (cost=0.29..8.31 rows=1 width=67) (actual time=0.013..0.013 rows=1.00 loops=1)
+        Index Cond: ((title_id = 2909) AND (season_no = 1) AND (episode_no = 5))
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=126
+Planning Time: 0.206 ms
+Trigger for constraint viewing_activity_profile_id_fkey: time=0.162 calls=1
+Trigger for constraint viewing_activity_title_id_fkey: time=0.154 calls=1
+Trigger for constraint viewing_episode_matches_title: time=0.054 calls=1
+Execution Time: 0.541 ms
+=== W01 run 2 ===
+Insert on viewing_activity  (cost=0.29..8.31 rows=0 width=0) (actual time=0.142..0.142 rows=0.00 loops=1)
+  Buffers: shared hit=126
+  ->  Index Scan using episodes_position_unique on episodes  (cost=0.29..8.31 rows=1 width=67) (actual time=0.012..0.013 rows=1.00 loops=1)
+        Index Cond: ((title_id = 2909) AND (season_no = 1) AND (episode_no = 5))
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=126
+Planning Time: 0.198 ms
+Trigger for constraint viewing_activity_profile_id_fkey: time=0.146 calls=1
+Trigger for constraint viewing_activity_title_id_fkey: time=0.139 calls=1
+Trigger for constraint viewing_episode_matches_title: time=0.041 calls=1
+Execution Time: 0.480 ms
+=== W01 run 3 ===
+Insert on viewing_activity  (cost=0.29..8.31 rows=0 width=0) (actual time=0.150..0.151 rows=0.00 loops=1)
+  Buffers: shared hit=126
+  ->  Index Scan using episodes_position_unique on episodes  (cost=0.29..8.31 rows=1 width=67) (actual time=0.012..0.013 rows=1.00 loops=1)
+        Index Cond: ((title_id = 2909) AND (season_no = 1) AND (episode_no = 5))
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=126
+Planning Time: 0.204 ms
+Trigger for constraint viewing_activity_profile_id_fkey: time=0.180 calls=1
+Trigger for constraint viewing_activity_title_id_fkey: time=0.144 calls=1
+Trigger for constraint viewing_episode_matches_title: time=0.044 calls=1
+Execution Time: 0.530 ms

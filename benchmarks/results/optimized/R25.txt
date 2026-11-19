@@ -1,0 +1,93 @@
+=== R25 run 1 ===
+Limit  (cost=71.70..71.75 rows=20 width=12) (actual time=0.334..0.335 rows=20.00 loops=1)
+  Buffers: shared hit=21
+  ->  Sort  (cost=71.70..72.55 rows=341 width=12) (actual time=0.333..0.334 rows=20.00 loops=1)
+        Sort Key: (count(*)) DESC, tg2.title_id
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=21
+        ->  HashAggregate  (cost=49.85..62.63 rows=341 width=12) (actual time=0.265..0.308 rows=399.00 loops=1)
+              Group Key: tg2.title_id
+              Filter: (count(*) >= 2)
+              Batches: 1  Memory Usage: 121kB
+              Rows Removed by Filter: 993
+              Buffers: shared hit=15
+              ->  Nested Loop  (cost=0.56..44.74 rows=1022 width=4) (actual time=0.039..0.162 rows=1824.00 loops=1)
+                    Buffers: shared hit=15
+                    ->  Index Only Scan using title_genres_pkey on title_genres tg1  (cost=0.28..4.32 rows=2 width=8) (actual time=0.022..0.022 rows=3.00 loops=1)
+                          Index Cond: (title_id = 2909)
+                          Heap Fetches: 0
+                          Index Searches: 1
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using title_genres_genre_title_idx on title_genres tg2  (cost=0.28..16.24 rows=397 width=8) (actual time=0.007..0.029 rows=608.00 loops=3)
+                          Index Cond: (genre_id = tg1.genre_id)
+                          Filter: (title_id <> tg1.title_id)
+                          Rows Removed by Filter: 1
+                          Heap Fetches: 0
+                          Index Searches: 3
+                          Buffers: shared hit=12
+Planning:
+  Buffers: shared hit=117
+Planning Time: 0.231 ms
+Execution Time: 0.363 ms
+=== R25 run 2 ===
+Limit  (cost=71.70..71.75 rows=20 width=12) (actual time=0.323..0.324 rows=20.00 loops=1)
+  Buffers: shared hit=21
+  ->  Sort  (cost=71.70..72.55 rows=341 width=12) (actual time=0.323..0.323 rows=20.00 loops=1)
+        Sort Key: (count(*)) DESC, tg2.title_id
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=21
+        ->  HashAggregate  (cost=49.85..62.63 rows=341 width=12) (actual time=0.255..0.296 rows=399.00 loops=1)
+              Group Key: tg2.title_id
+              Filter: (count(*) >= 2)
+              Batches: 1  Memory Usage: 121kB
+              Rows Removed by Filter: 993
+              Buffers: shared hit=15
+              ->  Nested Loop  (cost=0.56..44.74 rows=1022 width=4) (actual time=0.031..0.153 rows=1824.00 loops=1)
+                    Buffers: shared hit=15
+                    ->  Index Only Scan using title_genres_pkey on title_genres tg1  (cost=0.28..4.32 rows=2 width=8) (actual time=0.024..0.024 rows=3.00 loops=1)
+                          Index Cond: (title_id = 2909)
+                          Heap Fetches: 0
+                          Index Searches: 1
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using title_genres_genre_title_idx on title_genres tg2  (cost=0.28..16.24 rows=397 width=8) (actual time=0.004..0.024 rows=608.00 loops=3)
+                          Index Cond: (genre_id = tg1.genre_id)
+                          Filter: (title_id <> tg1.title_id)
+                          Rows Removed by Filter: 1
+                          Heap Fetches: 0
+                          Index Searches: 3
+                          Buffers: shared hit=12
+Planning:
+  Buffers: shared hit=117
+Planning Time: 0.220 ms
+Execution Time: 0.347 ms
+=== R25 run 3 ===
+Limit  (cost=71.70..71.75 rows=20 width=12) (actual time=0.342..0.343 rows=20.00 loops=1)
+  Buffers: shared hit=21
+  ->  Sort  (cost=71.70..72.55 rows=341 width=12) (actual time=0.341..0.342 rows=20.00 loops=1)
+        Sort Key: (count(*)) DESC, tg2.title_id
+        Sort Method: top-N heapsort  Memory: 26kB
+        Buffers: shared hit=21
+        ->  HashAggregate  (cost=49.85..62.63 rows=341 width=12) (actual time=0.263..0.311 rows=399.00 loops=1)
+              Group Key: tg2.title_id
+              Filter: (count(*) >= 2)
+              Batches: 1  Memory Usage: 121kB
+              Rows Removed by Filter: 993
+              Buffers: shared hit=15
+              ->  Nested Loop  (cost=0.56..44.74 rows=1022 width=4) (actual time=0.028..0.156 rows=1824.00 loops=1)
+                    Buffers: shared hit=15
+                    ->  Index Only Scan using title_genres_pkey on title_genres tg1  (cost=0.28..4.32 rows=2 width=8) (actual time=0.021..0.021 rows=3.00 loops=1)
+                          Index Cond: (title_id = 2909)
+                          Heap Fetches: 0
+                          Index Searches: 1
+                          Buffers: shared hit=3
+                    ->  Index Only Scan using title_genres_genre_title_idx on title_genres tg2  (cost=0.28..16.24 rows=397 width=8) (actual time=0.004..0.026 rows=608.00 loops=3)
+                          Index Cond: (genre_id = tg1.genre_id)
+                          Filter: (title_id <> tg1.title_id)
+                          Rows Removed by Filter: 1
+                          Heap Fetches: 0
+                          Index Searches: 3
+                          Buffers: shared hit=12
+Planning:
+  Buffers: shared hit=117
+Planning Time: 0.244 ms
+Execution Time: 0.369 ms

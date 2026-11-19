@@ -1,0 +1,81 @@
+=== R01 run 1 ===
+Unique  (cost=36.51..36.52 rows=2 width=45) (actual time=0.029..0.029 rows=1.00 loops=1)
+  Buffers: shared hit=14
+  ->  Sort  (cost=36.51..36.51 rows=2 width=45) (actual time=0.029..0.029 rows=1.00 loops=1)
+        Sort Key: v.title_id, v.started_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=14
+        ->  Nested Loop  (cost=4.73..36.50 rows=2 width=45) (actual time=0.018..0.019 rows=1.00 loops=1)
+              Buffers: shared hit=8
+              ->  Bitmap Heap Scan on viewing_activity v  (cost=4.45..19.90 rows=2 width=20) (actual time=0.015..0.015 rows=1.00 loops=1)
+                    Recheck Cond: (profile_id = 7043)
+                    Filter: (NOT completed)
+                    Rows Removed by Filter: 4
+                    Heap Blocks: exact=2
+                    Buffers: shared hit=5
+                    ->  Bitmap Index Scan on viewing_profile_title_started_idx  (cost=0.00..4.45 rows=4 width=0) (actual time=0.007..0.007 rows=5.00 loops=1)
+                          Index Cond: (profile_id = 7043)
+                          Index Searches: 1
+                          Buffers: shared hit=3
+              ->  Index Scan using titles_pkey on titles t  (cost=0.28..8.30 rows=1 width=29) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Index Cond: (title_id = v.title_id)
+                    Index Searches: 1
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=259
+Planning Time: 0.557 ms
+Execution Time: 0.060 ms
+=== R01 run 2 ===
+Unique  (cost=36.51..36.52 rows=2 width=45) (actual time=0.027..0.027 rows=1.00 loops=1)
+  Buffers: shared hit=14
+  ->  Sort  (cost=36.51..36.51 rows=2 width=45) (actual time=0.026..0.027 rows=1.00 loops=1)
+        Sort Key: v.title_id, v.started_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=14
+        ->  Nested Loop  (cost=4.73..36.50 rows=2 width=45) (actual time=0.016..0.016 rows=1.00 loops=1)
+              Buffers: shared hit=8
+              ->  Bitmap Heap Scan on viewing_activity v  (cost=4.45..19.90 rows=2 width=20) (actual time=0.013..0.013 rows=1.00 loops=1)
+                    Recheck Cond: (profile_id = 7043)
+                    Filter: (NOT completed)
+                    Rows Removed by Filter: 4
+                    Heap Blocks: exact=2
+                    Buffers: shared hit=5
+                    ->  Bitmap Index Scan on viewing_profile_title_started_idx  (cost=0.00..4.45 rows=4 width=0) (actual time=0.006..0.006 rows=5.00 loops=1)
+                          Index Cond: (profile_id = 7043)
+                          Index Searches: 1
+                          Buffers: shared hit=3
+              ->  Index Scan using titles_pkey on titles t  (cost=0.28..8.30 rows=1 width=29) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Index Cond: (title_id = v.title_id)
+                    Index Searches: 1
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=264
+Planning Time: 0.521 ms
+Execution Time: 0.054 ms
+=== R01 run 3 ===
+Unique  (cost=36.51..36.52 rows=2 width=45) (actual time=0.029..0.029 rows=1.00 loops=1)
+  Buffers: shared hit=14
+  ->  Sort  (cost=36.51..36.51 rows=2 width=45) (actual time=0.028..0.029 rows=1.00 loops=1)
+        Sort Key: v.title_id, v.started_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=14
+        ->  Nested Loop  (cost=4.73..36.50 rows=2 width=45) (actual time=0.018..0.018 rows=1.00 loops=1)
+              Buffers: shared hit=8
+              ->  Bitmap Heap Scan on viewing_activity v  (cost=4.45..19.90 rows=2 width=20) (actual time=0.014..0.014 rows=1.00 loops=1)
+                    Recheck Cond: (profile_id = 7043)
+                    Filter: (NOT completed)
+                    Rows Removed by Filter: 4
+                    Heap Blocks: exact=2
+                    Buffers: shared hit=5
+                    ->  Bitmap Index Scan on viewing_profile_title_started_idx  (cost=0.00..4.45 rows=4 width=0) (actual time=0.006..0.006 rows=5.00 loops=1)
+                          Index Cond: (profile_id = 7043)
+                          Index Searches: 1
+                          Buffers: shared hit=3
+              ->  Index Scan using titles_pkey on titles t  (cost=0.28..8.30 rows=1 width=29) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Index Cond: (title_id = v.title_id)
+                    Index Searches: 1
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=264
+Planning Time: 0.469 ms
+Execution Time: 0.067 ms

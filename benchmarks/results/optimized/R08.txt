@@ -1,0 +1,63 @@
+=== R08 run 1 ===
+Sort  (cost=799.88..804.82 rows=1976 width=20) (actual time=1.775..1.792 rows=1023.00 loops=1)
+  Sort Key: (count(*)) DESC, ((started_at)::date)
+  Sort Method: quicksort  Memory: 64kB
+  Buffers: shared hit=903 read=59
+  ->  HashAggregate  (cost=612.69..691.71 rows=1976 width=20) (actual time=1.510..1.643 rows=1023.00 loops=1)
+        Group Key: profile_id, title_id, (started_at)::date
+        Filter: (count(*) >= 3)
+        Batches: 1  Memory Usage: 281kB
+        Rows Removed by Filter: 1608
+        Buffers: shared hit=897 read=59
+        ->  Index Scan using viewing_started_idx on viewing_activity  (cost=0.42..553.42 rows=5927 width=12) (actual time=0.020..1.041 rows=5818.00 loops=1)
+              Index Cond: (started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone)
+              Filter: (episode_id IS NOT NULL)
+              Rows Removed by Filter: 5165
+              Index Searches: 1
+              Buffers: shared hit=897 read=59
+Planning:
+  Buffers: shared hit=207
+Planning Time: 0.300 ms
+Execution Time: 1.853 ms
+=== R08 run 2 ===
+Sort  (cost=799.88..804.82 rows=1976 width=20) (actual time=1.563..1.580 rows=1023.00 loops=1)
+  Sort Key: (count(*)) DESC, ((started_at)::date)
+  Sort Method: quicksort  Memory: 64kB
+  Buffers: shared hit=962
+  ->  HashAggregate  (cost=612.69..691.71 rows=1976 width=20) (actual time=1.347..1.469 rows=1023.00 loops=1)
+        Group Key: profile_id, title_id, (started_at)::date
+        Filter: (count(*) >= 3)
+        Batches: 1  Memory Usage: 281kB
+        Rows Removed by Filter: 1608
+        Buffers: shared hit=956
+        ->  Index Scan using viewing_started_idx on viewing_activity  (cost=0.42..553.42 rows=5927 width=12) (actual time=0.009..0.911 rows=5818.00 loops=1)
+              Index Cond: (started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone)
+              Filter: (episode_id IS NOT NULL)
+              Rows Removed by Filter: 5165
+              Index Searches: 1
+              Buffers: shared hit=956
+Planning:
+  Buffers: shared hit=207
+Planning Time: 0.283 ms
+Execution Time: 1.633 ms
+=== R08 run 3 ===
+Sort  (cost=799.88..804.82 rows=1976 width=20) (actual time=1.531..1.547 rows=1023.00 loops=1)
+  Sort Key: (count(*)) DESC, ((started_at)::date)
+  Sort Method: quicksort  Memory: 64kB
+  Buffers: shared hit=962
+  ->  HashAggregate  (cost=612.69..691.71 rows=1976 width=20) (actual time=1.323..1.438 rows=1023.00 loops=1)
+        Group Key: profile_id, title_id, (started_at)::date
+        Filter: (count(*) >= 3)
+        Batches: 1  Memory Usage: 281kB
+        Rows Removed by Filter: 1608
+        Buffers: shared hit=956
+        ->  Index Scan using viewing_started_idx on viewing_activity  (cost=0.42..553.42 rows=5927 width=12) (actual time=0.008..0.879 rows=5818.00 loops=1)
+              Index Cond: (started_at >= '2026-06-01 00:00:00+05:30'::timestamp with time zone)
+              Filter: (episode_id IS NOT NULL)
+              Rows Removed by Filter: 5165
+              Index Searches: 1
+              Buffers: shared hit=956
+Planning:
+  Buffers: shared hit=207
+Planning Time: 0.260 ms
+Execution Time: 1.598 ms
