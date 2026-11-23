@@ -1,0 +1,54 @@
+=== R01 before run 1 ===
+Unique  (cost=0.72..41.14 rows=2 width=48) (actual time=0.055..0.056 rows=1.00 loops=1)
+  Buffers: shared hit=3 read=4
+  ->  Nested Loop  (cost=0.72..41.13 rows=2 width=48) (actual time=0.054..0.054 rows=1.00 loops=1)
+        Buffers: shared hit=3 read=4
+        ->  Index Scan using viewing_profile_title_started_idx on viewing_activity v  (cost=0.43..24.52 rows=2 width=20) (actual time=0.037..0.037 rows=1.00 loops=1)
+              Index Cond: (profile_id = 7043)
+              Filter: (NOT completed)
+              Index Searches: 1
+              Buffers: shared hit=1 read=3
+        ->  Index Scan using titles_pkey on titles t  (cost=0.29..8.31 rows=1 width=32) (actual time=0.015..0.015 rows=1.00 loops=1)
+              Index Cond: (title_id = v.title_id)
+              Index Searches: 1
+              Buffers: shared hit=2 read=1
+Planning:
+  Buffers: shared hit=259 read=5
+Planning Time: 1.448 ms
+Execution Time: 0.140 ms
+=== R01 before run 2 ===
+Unique  (cost=0.72..41.14 rows=2 width=48) (actual time=0.027..0.028 rows=1.00 loops=1)
+  Buffers: shared hit=7
+  ->  Nested Loop  (cost=0.72..41.13 rows=2 width=48) (actual time=0.025..0.026 rows=1.00 loops=1)
+        Buffers: shared hit=7
+        ->  Index Scan using viewing_profile_title_started_idx on viewing_activity v  (cost=0.43..24.52 rows=2 width=20) (actual time=0.015..0.015 rows=1.00 loops=1)
+              Index Cond: (profile_id = 7043)
+              Filter: (NOT completed)
+              Index Searches: 1
+              Buffers: shared hit=4
+        ->  Index Scan using titles_pkey on titles t  (cost=0.29..8.31 rows=1 width=32) (actual time=0.008..0.008 rows=1.00 loops=1)
+              Index Cond: (title_id = v.title_id)
+              Index Searches: 1
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=264
+Planning Time: 1.157 ms
+Execution Time: 0.083 ms
+=== R01 before run 3 ===
+Unique  (cost=0.72..41.14 rows=2 width=48) (actual time=0.034..0.035 rows=1.00 loops=1)
+  Buffers: shared hit=7
+  ->  Nested Loop  (cost=0.72..41.13 rows=2 width=48) (actual time=0.033..0.034 rows=1.00 loops=1)
+        Buffers: shared hit=7
+        ->  Index Scan using viewing_profile_title_started_idx on viewing_activity v  (cost=0.43..24.52 rows=2 width=20) (actual time=0.014..0.014 rows=1.00 loops=1)
+              Index Cond: (profile_id = 7043)
+              Filter: (NOT completed)
+              Index Searches: 1
+              Buffers: shared hit=4
+        ->  Index Scan using titles_pkey on titles t  (cost=0.29..8.31 rows=1 width=32) (actual time=0.018..0.018 rows=1.00 loops=1)
+              Index Cond: (title_id = v.title_id)
+              Index Searches: 1
+              Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=264
+Planning Time: 1.160 ms
+Execution Time: 0.086 ms

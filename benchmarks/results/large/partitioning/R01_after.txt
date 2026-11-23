@@ -1,0 +1,510 @@
+=== R01 after run 1 ===
+Unique  (cost=385.85..385.95 rows=20 width=48) (actual time=0.483..0.487 rows=1.00 loops=1)
+  Buffers: shared hit=8 read=57 dirtied=2
+  ->  Sort  (cost=385.85..385.90 rows=20 width=48) (actual time=0.482..0.485 rows=1.00 loops=1)
+        Sort Key: v.title_id, v.started_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=8 read=57 dirtied=2
+        ->  Nested Loop  (cost=4.73..385.41 rows=20 width=48) (actual time=0.267..0.462 rows=1.00 loops=1)
+              Buffers: shared hit=2 read=57 dirtied=2
+              ->  Append  (cost=4.44..223.26 rows=20 width=20) (actual time=0.249..0.444 rows=1.00 loops=1)
+                    Buffers: shared hit=1 read=55 dirtied=2
+                    ->  Bitmap Heap Scan on viewing_activity_2025_01 v_1  (cost=4.44..12.26 rows=1 width=20) (actual time=0.023..0.023 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_01_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.020..0.020 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_02 v_2  (cost=4.44..12.25 rows=1 width=20) (actual time=0.026..0.026 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_02_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.023..0.023 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_03 v_3  (cost=4.44..12.26 rows=1 width=20) (actual time=0.017..0.017 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_03_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.016..0.016 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_04 v_4  (cost=4.44..12.26 rows=1 width=20) (actual time=0.021..0.021 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_04_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.020..0.020 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_05 v_5  (cost=4.44..12.26 rows=1 width=20) (actual time=0.022..0.022 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_05_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.020..0.020 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_06 v_6  (cost=4.44..12.26 rows=1 width=20) (actual time=0.017..0.018 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_06_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.016..0.016 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_07 v_7  (cost=4.44..12.26 rows=1 width=20) (actual time=0.017..0.017 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_07_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.015..0.015 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_08 v_8  (cost=4.44..12.26 rows=1 width=20) (actual time=0.021..0.021 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_08_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.018..0.018 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_09 v_9  (cost=4.44..12.26 rows=1 width=20) (actual time=0.083..0.084 rows=1.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Heap Blocks: exact=1
+                          Buffers: shared read=4 dirtied=1
+                          ->  Bitmap Index Scan on viewing_activity_2025_09_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.018..0.018 rows=1.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_10 v_10  (cost=4.44..12.26 rows=1 width=20) (actual time=0.016..0.016 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_10_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.015..0.015 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_11 v_11  (cost=4.44..12.26 rows=1 width=20) (actual time=0.024..0.024 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_11_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.022..0.022 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_12 v_12  (cost=4.44..12.26 rows=1 width=20) (actual time=0.016..0.016 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_12_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.015..0.015 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_01 v_13  (cost=4.44..12.26 rows=1 width=20) (actual time=0.017..0.017 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_01_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.016..0.016 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_02 v_14  (cost=4.44..12.25 rows=1 width=20) (actual time=0.017..0.017 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_02_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.014..0.014 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_03 v_15  (cost=4.44..12.26 rows=1 width=20) (actual time=0.019..0.019 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_03_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.018..0.018 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_04 v_16  (cost=4.44..12.26 rows=1 width=20) (actual time=0.020..0.020 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_04_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.019..0.019 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_05 v_17  (cost=4.44..12.26 rows=1 width=20) (actual time=0.019..0.019 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_05_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.016..0.016 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_06 v_18  (cost=4.44..12.26 rows=1 width=20) (actual time=0.015..0.015 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared read=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_06_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.013..0.014 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared read=3
+                    ->  Seq Scan on viewing_activity_2026_07 v_19  (cost=0.00..2.51 rows=1 width=20) (actual time=0.026..0.026 rows=0.00 loops=1)
+                          Filter: ((NOT completed) AND (profile_id = 7043))
+                          Rows Removed by Filter: 121
+                          Buffers: shared hit=1 dirtied=1
+                    ->  Seq Scan on viewing_activity_default v_20  (cost=0.00..0.00 rows=1 width=20) (actual time=0.003..0.003 rows=0.00 loops=1)
+                          Filter: ((NOT completed) AND (profile_id = 7043))
+              ->  Index Scan using titles_pkey on titles t  (cost=0.29..8.11 rows=1 width=32) (actual time=0.016..0.016 rows=1.00 loops=1)
+                    Index Cond: (title_id = v.title_id)
+                    Index Searches: 1
+                    Buffers: shared hit=1 read=2
+Planning:
+  Buffers: shared hit=2760 read=120 dirtied=34
+Planning Time: 10.621 ms
+Execution Time: 0.664 ms
+=== R01 after run 2 ===
+Unique  (cost=385.85..385.95 rows=20 width=48) (actual time=0.185..0.187 rows=1.00 loops=1)
+  Buffers: shared hit=65
+  ->  Sort  (cost=385.85..385.90 rows=20 width=48) (actual time=0.184..0.186 rows=1.00 loops=1)
+        Sort Key: v.title_id, v.started_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=65
+        ->  Nested Loop  (cost=4.73..385.41 rows=20 width=48) (actual time=0.089..0.171 rows=1.00 loops=1)
+              Buffers: shared hit=59
+              ->  Append  (cost=4.44..223.26 rows=20 width=20) (actual time=0.080..0.162 rows=1.00 loops=1)
+                    Buffers: shared hit=56
+                    ->  Bitmap Heap Scan on viewing_activity_2025_01 v_1  (cost=4.44..12.26 rows=1 width=20) (actual time=0.009..0.009 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_01_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.006..0.006 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_02 v_2  (cost=4.44..12.25 rows=1 width=20) (actual time=0.010..0.010 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_02_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.009..0.009 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_03 v_3  (cost=4.44..12.26 rows=1 width=20) (actual time=0.007..0.007 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_03_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.006..0.006 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_04 v_4  (cost=4.44..12.26 rows=1 width=20) (actual time=0.010..0.010 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_04_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.009..0.009 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_05 v_5  (cost=4.44..12.26 rows=1 width=20) (actual time=0.009..0.009 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_05_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.008..0.008 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_06 v_6  (cost=4.44..12.26 rows=1 width=20) (actual time=0.008..0.008 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_06_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.007..0.007 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_07 v_7  (cost=4.44..12.26 rows=1 width=20) (actual time=0.006..0.006 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_07_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.005..0.005 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_08 v_8  (cost=4.44..12.26 rows=1 width=20) (actual time=0.009..0.009 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_08_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.007..0.007 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_09 v_9  (cost=4.44..12.26 rows=1 width=20) (actual time=0.013..0.013 rows=1.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Heap Blocks: exact=1
+                          Buffers: shared hit=4
+                          ->  Bitmap Index Scan on viewing_activity_2025_09_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.007..0.007 rows=1.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_10 v_10  (cost=4.44..12.26 rows=1 width=20) (actual time=0.006..0.006 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_10_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.006..0.006 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_11 v_11  (cost=4.44..12.26 rows=1 width=20) (actual time=0.008..0.008 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_11_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.007..0.007 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_12 v_12  (cost=4.44..12.26 rows=1 width=20) (actual time=0.009..0.010 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_12_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.009..0.009 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_01 v_13  (cost=4.44..12.26 rows=1 width=20) (actual time=0.007..0.007 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_01_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.006..0.006 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_02 v_14  (cost=4.44..12.25 rows=1 width=20) (actual time=0.006..0.006 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_02_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.005..0.005 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_03 v_15  (cost=4.44..12.26 rows=1 width=20) (actual time=0.008..0.008 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_03_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.007..0.007 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_04 v_16  (cost=4.44..12.26 rows=1 width=20) (actual time=0.008..0.008 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_04_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.007..0.007 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_05 v_17  (cost=4.44..12.26 rows=1 width=20) (actual time=0.008..0.008 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_05_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.006..0.006 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_06 v_18  (cost=4.44..12.26 rows=1 width=20) (actual time=0.006..0.006 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_06_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.005..0.005 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Seq Scan on viewing_activity_2026_07 v_19  (cost=0.00..2.51 rows=1 width=20) (actual time=0.011..0.011 rows=0.00 loops=1)
+                          Filter: ((NOT completed) AND (profile_id = 7043))
+                          Rows Removed by Filter: 121
+                          Buffers: shared hit=1
+                    ->  Seq Scan on viewing_activity_default v_20  (cost=0.00..0.00 rows=1 width=20) (actual time=0.002..0.002 rows=0.00 loops=1)
+                          Filter: ((NOT completed) AND (profile_id = 7043))
+              ->  Index Scan using titles_pkey on titles t  (cost=0.29..8.11 rows=1 width=32) (actual time=0.007..0.007 rows=1.00 loops=1)
+                    Index Cond: (title_id = v.title_id)
+                    Index Searches: 1
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=2863
+Planning Time: 7.057 ms
+Execution Time: 0.340 ms
+=== R01 after run 3 ===
+Unique  (cost=385.85..385.95 rows=20 width=48) (actual time=0.112..0.114 rows=1.00 loops=1)
+  Buffers: shared hit=65
+  ->  Sort  (cost=385.85..385.90 rows=20 width=48) (actual time=0.112..0.114 rows=1.00 loops=1)
+        Sort Key: v.title_id, v.started_at DESC
+        Sort Method: quicksort  Memory: 25kB
+        Buffers: shared hit=65
+        ->  Nested Loop  (cost=4.73..385.41 rows=20 width=48) (actual time=0.053..0.103 rows=1.00 loops=1)
+              Buffers: shared hit=59
+              ->  Append  (cost=4.44..223.26 rows=20 width=20) (actual time=0.048..0.098 rows=1.00 loops=1)
+                    Buffers: shared hit=56
+                    ->  Bitmap Heap Scan on viewing_activity_2025_01 v_1  (cost=4.44..12.26 rows=1 width=20) (actual time=0.005..0.005 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_01_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.004..0.004 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_02 v_2  (cost=4.44..12.25 rows=1 width=20) (actual time=0.006..0.006 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_02_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.004..0.004 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_03 v_3  (cost=4.44..12.26 rows=1 width=20) (actual time=0.004..0.004 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_03_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.003..0.003 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_04 v_4  (cost=4.44..12.26 rows=1 width=20) (actual time=0.005..0.005 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_04_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.005..0.005 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_05 v_5  (cost=4.44..12.26 rows=1 width=20) (actual time=0.006..0.006 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_05_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.004..0.004 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_06 v_6  (cost=4.44..12.26 rows=1 width=20) (actual time=0.005..0.005 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_06_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.004..0.004 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_07 v_7  (cost=4.44..12.26 rows=1 width=20) (actual time=0.003..0.003 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_07_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.003..0.003 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_08 v_8  (cost=4.44..12.26 rows=1 width=20) (actual time=0.005..0.005 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_08_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.003..0.003 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_09 v_9  (cost=4.44..12.26 rows=1 width=20) (actual time=0.008..0.009 rows=1.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Heap Blocks: exact=1
+                          Buffers: shared hit=4
+                          ->  Bitmap Index Scan on viewing_activity_2025_09_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.006..0.006 rows=1.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_10 v_10  (cost=4.44..12.26 rows=1 width=20) (actual time=0.004..0.004 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_10_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.003..0.003 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_11 v_11  (cost=4.44..12.26 rows=1 width=20) (actual time=0.005..0.005 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_11_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.004..0.004 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2025_12 v_12  (cost=4.44..12.26 rows=1 width=20) (actual time=0.005..0.005 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2025_12_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.004..0.004 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_01 v_13  (cost=4.44..12.26 rows=1 width=20) (actual time=0.004..0.004 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_01_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.003..0.003 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_02 v_14  (cost=4.44..12.25 rows=1 width=20) (actual time=0.004..0.004 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_02_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.002..0.002 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_03 v_15  (cost=4.44..12.26 rows=1 width=20) (actual time=0.005..0.005 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_03_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.004..0.004 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_04 v_16  (cost=4.44..12.26 rows=1 width=20) (actual time=0.004..0.004 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_04_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.004..0.004 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_05 v_17  (cost=4.44..12.26 rows=1 width=20) (actual time=0.005..0.005 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_05_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.003..0.003 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Bitmap Heap Scan on viewing_activity_2026_06 v_18  (cost=4.44..12.26 rows=1 width=20) (actual time=0.003..0.003 rows=0.00 loops=1)
+                          Recheck Cond: (profile_id = 7043)
+                          Filter: (NOT completed)
+                          Buffers: shared hit=3
+                          ->  Bitmap Index Scan on viewing_activity_2026_06_profile_id_title_id_started_at_idx  (cost=0.00..4.43 rows=2 width=0) (actual time=0.003..0.003 rows=0.00 loops=1)
+                                Index Cond: (profile_id = 7043)
+                                Index Searches: 1
+                                Buffers: shared hit=3
+                    ->  Seq Scan on viewing_activity_2026_07 v_19  (cost=0.00..2.51 rows=1 width=20) (actual time=0.008..0.008 rows=0.00 loops=1)
+                          Filter: ((NOT completed) AND (profile_id = 7043))
+                          Rows Removed by Filter: 121
+                          Buffers: shared hit=1
+                    ->  Seq Scan on viewing_activity_default v_20  (cost=0.00..0.00 rows=1 width=20) (actual time=0.001..0.001 rows=0.00 loops=1)
+                          Filter: ((NOT completed) AND (profile_id = 7043))
+              ->  Index Scan using titles_pkey on titles t  (cost=0.29..8.11 rows=1 width=32) (actual time=0.004..0.004 rows=1.00 loops=1)
+                    Index Cond: (title_id = v.title_id)
+                    Index Searches: 1
+                    Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=2863
+Planning Time: 6.055 ms
+Execution Time: 0.206 ms

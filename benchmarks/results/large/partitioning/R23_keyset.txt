@@ -1,0 +1,348 @@
+=== R23 keyset run 1 ===
+Limit  (cost=8.35..11.49 rows=25 width=24) (actual time=0.170..0.174 rows=25.00 loops=1)
+  Buffers: shared hit=93 read=1
+  ->  Incremental Sort  (cost=8.35..485496.54 rows=3863208 width=24) (actual time=0.169..0.172 rows=25.00 loops=1)
+        Sort Key: viewing_activity.started_at DESC, viewing_activity.view_id DESC
+        Presorted Key: viewing_activity.started_at
+        Full-sort Groups: 1  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+        Buffers: shared hit=93 read=1
+        ->  Merge Append  (cost=8.26..311652.18 rows=3863208 width=24) (actual time=0.141..0.154 rows=26.00 loops=1)
+              Sort Key: viewing_activity.started_at DESC
+              Buffers: shared hit=87 read=1
+              ->  Index Scan Backward using viewing_activity_2025_01_started_at_title_id_profile_id_com_idx on viewing_activity_2025_01 viewing_activity_1  (cost=0.42..12076.04 rows=228692 width=24) (actual time=0.005..0.005 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_02_started_at_title_id_profile_id_com_idx on viewing_activity_2025_02 viewing_activity_2  (cost=0.42..10876.65 rows=205963 width=24) (actual time=0.008..0.008 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_03_started_at_title_id_profile_id_com_idx on viewing_activity_2025_03 viewing_activity_3  (cost=0.42..12011.61 rows=227473 width=24) (actual time=0.006..0.006 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_04_started_at_title_id_profile_id_com_idx on viewing_activity_2025_04 viewing_activity_4  (cost=0.42..11641.87 rows=220462 width=24) (actual time=0.005..0.005 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_05_started_at_title_id_profile_id_com_idx on viewing_activity_2025_05 viewing_activity_5  (cost=0.42..12047.60 rows=228139 width=24) (actual time=0.005..0.005 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_06_started_at_title_id_profile_id_com_idx on viewing_activity_2025_06 viewing_activity_6  (cost=0.42..11650.54 rows=220625 width=24) (actual time=0.009..0.009 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_07_started_at_title_id_profile_id_com_idx on viewing_activity_2025_07 viewing_activity_7  (cost=0.42..12040.19 rows=228032 width=24) (actual time=0.008..0.009 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_08_started_at_title_id_profile_id_com_idx on viewing_activity_2025_08 viewing_activity_8  (cost=0.42..12066.27 rows=228480 width=24) (actual time=0.004..0.004 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_09_started_at_title_id_profile_id_com_idx on viewing_activity_2025_09 viewing_activity_9  (cost=0.42..11677.99 rows=221134 width=24) (actual time=0.010..0.010 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_10_started_at_title_id_profile_id_com_idx on viewing_activity_2025_10 viewing_activity_10  (cost=0.42..12031.12 rows=227851 width=24) (actual time=0.007..0.007 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_11_started_at_title_id_profile_id_com_idx on viewing_activity_2025_11 viewing_activity_11  (cost=0.42..11666.51 rows=221024 width=24) (actual time=0.009..0.009 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_12_started_at_title_id_profile_id_com_idx on viewing_activity_2025_12 viewing_activity_12  (cost=0.42..12047.73 rows=228145 width=24) (actual time=0.004..0.004 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_01_started_at_title_id_profile_id_com_idx on viewing_activity_2026_01 viewing_activity_13  (cost=0.42..12002.69 rows=227343 width=24) (actual time=0.006..0.006 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_02_started_at_title_id_profile_id_com_idx on viewing_activity_2026_02 viewing_activity_14  (cost=0.42..10846.86 rows=205395 width=24) (actual time=0.006..0.006 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_03_started_at_title_id_profile_id_com_idx on viewing_activity_2026_03 viewing_activity_15  (cost=0.42..16850.52 rows=227551 width=24) (actual time=0.007..0.007 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_04_started_at_title_id_profile_id_com_idx on viewing_activity_2026_04 viewing_activity_16  (cost=0.42..11591.75 rows=219479 width=24) (actual time=0.004..0.004 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_05_started_at_title_id_profile_id_com_idx on viewing_activity_2026_05 viewing_activity_17  (cost=0.42..11990.48 rows=227067 width=24) (actual time=0.007..0.007 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_06_started_at_title_id_profile_id_com_idx on viewing_activity_2026_06 viewing_activity_18  (cost=0.42..3721.41 rows=70351 width=24) (actual time=0.022..0.032 rows=26.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Rows Removed by Filter: 1
+                    Index Searches: 1
+                    Buffers: shared hit=16 read=1
+              ->  Index Scan Backward using viewing_activity_2026_07_started_at_title_id_profile_id_com_idx on viewing_activity_2026_07 viewing_activity_19  (cost=0.14..7.19 rows=1 width=24) (actual time=0.004..0.004 rows=0.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=1
+              ->  Index Scan Backward using viewing_activity_default_started_at_title_id_profile_id_com_idx on viewing_activity_default viewing_activity_20  (cost=0.12..8.15 rows=1 width=24) (actual time=0.002..0.002 rows=0.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=3049 read=25 dirtied=5
+Planning Time: 8.619 ms
+Execution Time: 0.274 ms
+=== R23 keyset run 2 ===
+Limit  (cost=8.35..11.49 rows=25 width=24) (actual time=3.650..3.658 rows=25.00 loops=1)
+  Buffers: shared hit=94
+  ->  Incremental Sort  (cost=8.35..485496.54 rows=3863208 width=24) (actual time=3.648..3.654 rows=25.00 loops=1)
+        Sort Key: viewing_activity.started_at DESC, viewing_activity.view_id DESC
+        Presorted Key: viewing_activity.started_at
+        Full-sort Groups: 1  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+        Buffers: shared hit=94
+        ->  Merge Append  (cost=8.26..311652.18 rows=3863208 width=24) (actual time=3.584..3.602 rows=26.00 loops=1)
+              Sort Key: viewing_activity.started_at DESC
+              Buffers: shared hit=88
+              ->  Index Scan Backward using viewing_activity_2025_01_started_at_title_id_profile_id_com_idx on viewing_activity_2025_01 viewing_activity_1  (cost=0.42..12076.04 rows=228692 width=24) (actual time=0.902..0.902 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_02_started_at_title_id_profile_id_com_idx on viewing_activity_2025_02 viewing_activity_2  (cost=0.42..10876.65 rows=205963 width=24) (actual time=0.033..0.033 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_03_started_at_title_id_profile_id_com_idx on viewing_activity_2025_03 viewing_activity_3  (cost=0.42..12011.61 rows=227473 width=24) (actual time=0.013..0.013 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_04_started_at_title_id_profile_id_com_idx on viewing_activity_2025_04 viewing_activity_4  (cost=0.42..11641.87 rows=220462 width=24) (actual time=0.039..0.039 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_05_started_at_title_id_profile_id_com_idx on viewing_activity_2025_05 viewing_activity_5  (cost=0.42..12047.60 rows=228139 width=24) (actual time=1.334..1.334 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_06_started_at_title_id_profile_id_com_idx on viewing_activity_2025_06 viewing_activity_6  (cost=0.42..11650.54 rows=220625 width=24) (actual time=0.029..0.029 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_07_started_at_title_id_profile_id_com_idx on viewing_activity_2025_07 viewing_activity_7  (cost=0.42..12040.19 rows=228032 width=24) (actual time=0.019..0.019 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_08_started_at_title_id_profile_id_com_idx on viewing_activity_2025_08 viewing_activity_8  (cost=0.42..12066.27 rows=228480 width=24) (actual time=0.016..0.016 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_09_started_at_title_id_profile_id_com_idx on viewing_activity_2025_09 viewing_activity_9  (cost=0.42..11677.99 rows=221134 width=24) (actual time=1.021..1.021 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_10_started_at_title_id_profile_id_com_idx on viewing_activity_2025_10 viewing_activity_10  (cost=0.42..12031.12 rows=227851 width=24) (actual time=0.038..0.039 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_11_started_at_title_id_profile_id_com_idx on viewing_activity_2025_11 viewing_activity_11  (cost=0.42..11666.51 rows=221024 width=24) (actual time=0.018..0.018 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_12_started_at_title_id_profile_id_com_idx on viewing_activity_2025_12 viewing_activity_12  (cost=0.42..12047.73 rows=228145 width=24) (actual time=0.011..0.011 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_01_started_at_title_id_profile_id_com_idx on viewing_activity_2026_01 viewing_activity_13  (cost=0.42..12002.69 rows=227343 width=24) (actual time=0.012..0.012 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_02_started_at_title_id_profile_id_com_idx on viewing_activity_2026_02 viewing_activity_14  (cost=0.42..10846.86 rows=205395 width=24) (actual time=0.011..0.012 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_03_started_at_title_id_profile_id_com_idx on viewing_activity_2026_03 viewing_activity_15  (cost=0.42..16850.52 rows=227551 width=24) (actual time=0.014..0.014 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_04_started_at_title_id_profile_id_com_idx on viewing_activity_2026_04 viewing_activity_16  (cost=0.42..11591.75 rows=219479 width=24) (actual time=0.009..0.009 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_05_started_at_title_id_profile_id_com_idx on viewing_activity_2026_05 viewing_activity_17  (cost=0.42..11990.48 rows=227067 width=24) (actual time=0.012..0.013 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_06_started_at_title_id_profile_id_com_idx on viewing_activity_2026_06 viewing_activity_18  (cost=0.42..3721.41 rows=70351 width=24) (actual time=0.029..0.042 rows=26.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Rows Removed by Filter: 1
+                    Index Searches: 1
+                    Buffers: shared hit=17
+              ->  Index Scan Backward using viewing_activity_2026_07_started_at_title_id_profile_id_com_idx on viewing_activity_2026_07 viewing_activity_19  (cost=0.14..7.19 rows=1 width=24) (actual time=0.006..0.006 rows=0.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=1
+              ->  Index Scan Backward using viewing_activity_default_started_at_title_id_profile_id_com_idx on viewing_activity_default viewing_activity_20  (cost=0.12..8.15 rows=1 width=24) (actual time=0.005..0.005 rows=0.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=3004
+Planning Time: 6.663 ms
+Execution Time: 3.883 ms
+=== R23 keyset run 3 ===
+Limit  (cost=8.35..11.49 rows=25 width=24) (actual time=0.131..0.134 rows=25.00 loops=1)
+  Buffers: shared hit=94
+  ->  Incremental Sort  (cost=8.35..485496.54 rows=3863208 width=24) (actual time=0.131..0.132 rows=25.00 loops=1)
+        Sort Key: viewing_activity.started_at DESC, viewing_activity.view_id DESC
+        Presorted Key: viewing_activity.started_at
+        Full-sort Groups: 1  Sort Method: quicksort  Average Memory: 26kB  Peak Memory: 26kB
+        Buffers: shared hit=94
+        ->  Merge Append  (cost=8.26..311652.18 rows=3863208 width=24) (actual time=0.112..0.121 rows=26.00 loops=1)
+              Sort Key: viewing_activity.started_at DESC
+              Buffers: shared hit=88
+              ->  Index Scan Backward using viewing_activity_2025_01_started_at_title_id_profile_id_com_idx on viewing_activity_2025_01 viewing_activity_1  (cost=0.42..12076.04 rows=228692 width=24) (actual time=0.004..0.004 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_02_started_at_title_id_profile_id_com_idx on viewing_activity_2025_02 viewing_activity_2  (cost=0.42..10876.65 rows=205963 width=24) (actual time=0.006..0.006 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_03_started_at_title_id_profile_id_com_idx on viewing_activity_2025_03 viewing_activity_3  (cost=0.42..12011.61 rows=227473 width=24) (actual time=0.013..0.013 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_04_started_at_title_id_profile_id_com_idx on viewing_activity_2025_04 viewing_activity_4  (cost=0.42..11641.87 rows=220462 width=24) (actual time=0.004..0.004 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_05_started_at_title_id_profile_id_com_idx on viewing_activity_2025_05 viewing_activity_5  (cost=0.42..12047.60 rows=228139 width=24) (actual time=0.004..0.004 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_06_started_at_title_id_profile_id_com_idx on viewing_activity_2025_06 viewing_activity_6  (cost=0.42..11650.54 rows=220625 width=24) (actual time=0.007..0.007 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_07_started_at_title_id_profile_id_com_idx on viewing_activity_2025_07 viewing_activity_7  (cost=0.42..12040.19 rows=228032 width=24) (actual time=0.006..0.006 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_08_started_at_title_id_profile_id_com_idx on viewing_activity_2025_08 viewing_activity_8  (cost=0.42..12066.27 rows=228480 width=24) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_09_started_at_title_id_profile_id_com_idx on viewing_activity_2025_09 viewing_activity_9  (cost=0.42..11677.99 rows=221134 width=24) (actual time=0.005..0.005 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_10_started_at_title_id_profile_id_com_idx on viewing_activity_2025_10 viewing_activity_10  (cost=0.42..12031.12 rows=227851 width=24) (actual time=0.006..0.006 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_11_started_at_title_id_profile_id_com_idx on viewing_activity_2025_11 viewing_activity_11  (cost=0.42..11666.51 rows=221024 width=24) (actual time=0.007..0.007 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2025_12_started_at_title_id_profile_id_com_idx on viewing_activity_2025_12 viewing_activity_12  (cost=0.42..12047.73 rows=228145 width=24) (actual time=0.003..0.003 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_01_started_at_title_id_profile_id_com_idx on viewing_activity_2026_01 viewing_activity_13  (cost=0.42..12002.69 rows=227343 width=24) (actual time=0.005..0.005 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_02_started_at_title_id_profile_id_com_idx on viewing_activity_2026_02 viewing_activity_14  (cost=0.42..10846.86 rows=205395 width=24) (actual time=0.005..0.005 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_03_started_at_title_id_profile_id_com_idx on viewing_activity_2026_03 viewing_activity_15  (cost=0.42..16850.52 rows=227551 width=24) (actual time=0.005..0.005 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_04_started_at_title_id_profile_id_com_idx on viewing_activity_2026_04 viewing_activity_16  (cost=0.42..11591.75 rows=219479 width=24) (actual time=0.002..0.002 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_05_started_at_title_id_profile_id_com_idx on viewing_activity_2026_05 viewing_activity_17  (cost=0.42..11990.48 rows=227067 width=24) (actual time=0.008..0.008 rows=1.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=4
+              ->  Index Scan Backward using viewing_activity_2026_06_started_at_title_id_profile_id_com_idx on viewing_activity_2026_06 viewing_activity_18  (cost=0.42..3721.41 rows=70351 width=24) (actual time=0.014..0.021 rows=26.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Rows Removed by Filter: 1
+                    Index Searches: 1
+                    Buffers: shared hit=17
+              ->  Index Scan Backward using viewing_activity_2026_07_started_at_title_id_profile_id_com_idx on viewing_activity_2026_07 viewing_activity_19  (cost=0.14..7.19 rows=1 width=24) (actual time=0.002..0.002 rows=0.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=1
+              ->  Index Scan Backward using viewing_activity_default_started_at_title_id_profile_id_com_idx on viewing_activity_default viewing_activity_20  (cost=0.12..8.15 rows=1 width=24) (actual time=0.002..0.002 rows=0.00 loops=1)
+                    Index Cond: (started_at <= '2026-06-10 12:56:32+05:30'::timestamp with time zone)
+                    Filter: (ROW(started_at, view_id) < ROW('2026-06-10 12:56:32+05:30'::timestamp with time zone, 3862214))
+                    Index Searches: 1
+                    Buffers: shared hit=2
+Planning:
+  Buffers: shared hit=3004
+Planning Time: 5.379 ms
+Execution Time: 0.212 ms

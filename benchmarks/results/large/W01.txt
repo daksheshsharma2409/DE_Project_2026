@@ -1,0 +1,33 @@
+=== W01 run 1 ===
+Insert on viewing_activity  (cost=0.42..8.44 rows=0 width=0) (actual time=0.020..0.021 rows=0.00 loops=1)
+  Buffers: shared hit=3 read=3
+  ->  Index Scan using episodes_position_unique on episodes  (cost=0.42..8.44 rows=1 width=67) (actual time=0.020..0.020 rows=0.00 loops=1)
+        Index Cond: ((title_id = 2909) AND (season_no = 1) AND (episode_no = 5))
+        Index Searches: 1
+        Buffers: shared hit=3 read=3
+Planning:
+  Buffers: shared hit=123 read=3
+Planning Time: 0.285 ms
+Execution Time: 0.285 ms
+=== W01 run 2 ===
+Insert on viewing_activity  (cost=0.42..8.44 rows=0 width=0) (actual time=0.011..0.011 rows=0.00 loops=1)
+  Buffers: shared hit=6
+  ->  Index Scan using episodes_position_unique on episodes  (cost=0.42..8.44 rows=1 width=67) (actual time=0.011..0.011 rows=0.00 loops=1)
+        Index Cond: ((title_id = 2909) AND (season_no = 1) AND (episode_no = 5))
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=126
+Planning Time: 0.258 ms
+Execution Time: 0.024 ms
+=== W01 run 3 ===
+Insert on viewing_activity  (cost=0.42..8.44 rows=0 width=0) (actual time=0.011..0.011 rows=0.00 loops=1)
+  Buffers: shared hit=6
+  ->  Index Scan using episodes_position_unique on episodes  (cost=0.42..8.44 rows=1 width=67) (actual time=0.011..0.011 rows=0.00 loops=1)
+        Index Cond: ((title_id = 2909) AND (season_no = 1) AND (episode_no = 5))
+        Index Searches: 1
+        Buffers: shared hit=6
+Planning:
+  Buffers: shared hit=126
+Planning Time: 0.254 ms
+Execution Time: 0.025 ms

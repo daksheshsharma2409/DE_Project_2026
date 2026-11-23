@@ -1,0 +1,213 @@
+=== R09 after run 1 ===
+Sort  (cost=45887.41..45887.44 rows=15 width=48) (actual time=529.209..530.294 rows=15.00 loops=1)
+  Sort Key: (round(((100.0 * (count(*) FILTER (WHERE v.completed))::numeric) / (count(*))::numeric), 1)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=10558 read=325 dirtied=8776
+  ->  Finalize GroupAggregate  (cost=45882.31..45887.11 rows=15 width=48) (actual time=529.192..530.286 rows=15.00 loops=1)
+        Group Key: g.genre_name
+        Buffers: shared hit=10555 read=325 dirtied=8776
+        ->  Gather Merge  (cost=45882.31..45886.51 rows=36 width=24) (actual time=529.181..530.273 rows=45.00 loops=1)
+              Workers Planned: 2
+              Workers Launched: 2
+              Buffers: shared hit=10555 read=325 dirtied=8776
+              ->  Sort  (cost=44882.29..44882.33 rows=15 width=24) (actual time=527.607..527.609 rows=15.00 loops=3)
+                    Sort Key: g.genre_name
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=10555 read=325 dirtied=8776
+                    Worker 0:  Sort Method: quicksort  Memory: 25kB
+                    Worker 1:  Sort Method: quicksort  Memory: 25kB
+                    ->  Partial HashAggregate  (cost=44881.85..44882.00 rows=15 width=24) (actual time=527.587..527.590 rows=15.00 loops=3)
+                          Group Key: g.genre_name
+                          Batches: 1  Memory Usage: 32kB
+                          Buffers: shared hit=10539 read=325 dirtied=8776
+                          Worker 0:  Batches: 1  Memory Usage: 32kB
+                          Worker 1:  Batches: 1  Memory Usage: 32kB
+                          ->  Parallel Hash Join  (cost=3193.80..35487.92 rows=1252523 width=9) (actual time=7.002..464.798 rows=876476.67 loops=3)
+                                Hash Cond: (v.title_id = tg.title_id)
+                                Buffers: shared hit=10539 read=325 dirtied=8776
+                                ->  Parallel Append  (cost=0.00..25002.22 rows=552833 width=5) (actual time=0.009..396.094 rows=442266.33 loops=3)
+                                      Buffers: shared hit=10531 dirtied=8776
+                                      ->  Parallel Seq Scan on viewing_activity_2026_03 v_3  (cost=0.00..3814.80 rows=133854 width=5) (actual time=0.015..197.131 rows=227551.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1807 dirtied=1806
+                                      ->  Parallel Seq Scan on viewing_activity_2026_01 v_1  (cost=0.00..3809.97 rows=133731 width=5) (actual time=0.007..198.226 rows=227343.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1804 dirtied=1802
+                                      ->  Parallel Seq Scan on viewing_activity_2026_05 v_5  (cost=0.00..3805.53 rows=133569 width=5) (actual time=0.270..99.889 rows=75689.00 loops=3)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1802 dirtied=1800
+                                      ->  Parallel Seq Scan on viewing_activity_2026_06 v_6  (cost=0.00..3684.79 rows=129319 width=5) (actual time=0.004..14.009 rows=219843.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1745
+                                      ->  Parallel Seq Scan on viewing_activity_2026_04 v_4  (cost=0.00..3678.58 rows=129105 width=5) (actual time=0.095..135.845 rows=109739.50 loops=2)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1742 dirtied=1740
+                                      ->  Parallel Seq Scan on viewing_activity_2026_02 v_2  (cost=0.00..3442.31 rows=120821 width=5) (actual time=0.003..162.171 rows=205395.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1630 dirtied=1628
+                                      ->  Parallel Seq Scan on viewing_activity_2026_07 v_7  (cost=0.00..2.07 rows=71 width=5) (actual time=0.003..0.010 rows=121.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1
+                                      ->  Parallel Seq Scan on viewing_activity_default v_8  (cost=0.00..0.00 rows=1 width=5) (actual time=0.001..0.001 rows=0.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                ->  Parallel Hash  (cost=2573.15..2573.15 rows=49652 width=12) (actual time=6.955..6.955 rows=39722.00 loops=3)
+                                      Buckets: 131072  Batches: 1  Memory Usage: 6816kB
+                                      Buffers: shared hit=8 read=325
+                                      ->  Hash Join  (cost=1.63..2573.15 rows=49652 width=12) (actual time=0.057..4.517 rows=39722.00 loops=3)
+                                            Hash Cond: (tg.genre_id = g.genre_id)
+                                            Buffers: shared hit=8 read=325
+                                            ->  Parallel Index Only Scan using title_genres_pkey on title_genres tg  (cost=0.29..2404.65 rows=49652 width=8) (actual time=0.029..1.897 rows=39722.00 loops=3)
+                                                  Heap Fetches: 0
+                                                  Index Searches: 1
+                                                  Buffers: shared hit=6 read=324
+                                            ->  Hash  (cost=1.15..1.15 rows=15 width=12) (actual time=0.024..0.025 rows=15.00 loops=3)
+                                                  Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                                                  Buffers: shared hit=2 read=1
+                                                  ->  Seq Scan on genres g  (cost=0.00..1.15 rows=15 width=12) (actual time=0.020..0.021 rows=15.00 loops=3)
+                                                        Buffers: shared hit=2 read=1
+Planning:
+  Buffers: shared hit=1507 read=22 dirtied=5
+Planning Time: 3.482 ms
+Execution Time: 530.349 ms
+=== R09 after run 2 ===
+Sort  (cost=45887.41..45887.44 rows=15 width=48) (actual time=170.424..171.408 rows=15.00 loops=1)
+  Sort Key: (round(((100.0 * (count(*) FILTER (WHERE v.completed))::numeric) / (count(*))::numeric), 1)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=10883
+  ->  Finalize GroupAggregate  (cost=45882.31..45887.11 rows=15 width=48) (actual time=170.406..171.400 rows=15.00 loops=1)
+        Group Key: g.genre_name
+        Buffers: shared hit=10880
+        ->  Gather Merge  (cost=45882.31..45886.51 rows=36 width=24) (actual time=170.392..171.382 rows=45.00 loops=1)
+              Workers Planned: 2
+              Workers Launched: 2
+              Buffers: shared hit=10880
+              ->  Sort  (cost=44882.29..44882.33 rows=15 width=24) (actual time=168.794..168.797 rows=15.00 loops=3)
+                    Sort Key: g.genre_name
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=10880
+                    Worker 0:  Sort Method: quicksort  Memory: 25kB
+                    Worker 1:  Sort Method: quicksort  Memory: 25kB
+                    ->  Partial HashAggregate  (cost=44881.85..44882.00 rows=15 width=24) (actual time=168.772..168.776 rows=15.00 loops=3)
+                          Group Key: g.genre_name
+                          Batches: 1  Memory Usage: 32kB
+                          Buffers: shared hit=10864
+                          Worker 0:  Batches: 1  Memory Usage: 32kB
+                          Worker 1:  Batches: 1  Memory Usage: 32kB
+                          ->  Parallel Hash Join  (cost=3193.80..35487.92 rows=1252523 width=9) (actual time=5.972..106.386 rows=876476.67 loops=3)
+                                Hash Cond: (v.title_id = tg.title_id)
+                                Buffers: shared hit=10864
+                                ->  Parallel Append  (cost=0.00..25002.22 rows=552833 width=5) (actual time=0.006..42.654 rows=442266.33 loops=3)
+                                      Buffers: shared hit=10531
+                                      ->  Parallel Seq Scan on viewing_activity_2026_03 v_3  (cost=0.00..3814.80 rows=133854 width=5) (actual time=0.004..14.006 rows=227551.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1807
+                                      ->  Parallel Seq Scan on viewing_activity_2026_01 v_1  (cost=0.00..3809.97 rows=133731 width=5) (actual time=0.004..14.271 rows=227343.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1804
+                                      ->  Parallel Seq Scan on viewing_activity_2026_05 v_5  (cost=0.00..3805.53 rows=133569 width=5) (actual time=0.004..4.727 rows=75689.00 loops=3)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1802
+                                      ->  Parallel Seq Scan on viewing_activity_2026_06 v_6  (cost=0.00..3684.79 rows=129319 width=5) (actual time=0.007..6.769 rows=109921.50 loops=2)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1745
+                                      ->  Parallel Seq Scan on viewing_activity_2026_04 v_4  (cost=0.00..3678.58 rows=129105 width=5) (actual time=0.006..13.989 rows=219479.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1742
+                                      ->  Parallel Seq Scan on viewing_activity_2026_02 v_2  (cost=0.00..3442.31 rows=120821 width=5) (actual time=0.003..12.926 rows=205395.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1630
+                                      ->  Parallel Seq Scan on viewing_activity_2026_07 v_7  (cost=0.00..2.07 rows=71 width=5) (actual time=0.007..0.013 rows=121.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1
+                                      ->  Parallel Seq Scan on viewing_activity_default v_8  (cost=0.00..0.00 rows=1 width=5) (actual time=0.002..0.002 rows=0.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                ->  Parallel Hash  (cost=2573.15..2573.15 rows=49652 width=12) (actual time=5.920..5.921 rows=39722.00 loops=3)
+                                      Buckets: 131072  Batches: 1  Memory Usage: 6816kB
+                                      Buffers: shared hit=333
+                                      ->  Hash Join  (cost=1.63..2573.15 rows=49652 width=12) (actual time=0.041..3.706 rows=39722.00 loops=3)
+                                            Hash Cond: (tg.genre_id = g.genre_id)
+                                            Buffers: shared hit=333
+                                            ->  Parallel Index Only Scan using title_genres_pkey on title_genres tg  (cost=0.29..2404.65 rows=49652 width=8) (actual time=0.017..1.336 rows=39722.00 loops=3)
+                                                  Heap Fetches: 0
+                                                  Index Searches: 1
+                                                  Buffers: shared hit=330
+                                            ->  Hash  (cost=1.15..1.15 rows=15 width=12) (actual time=0.017..0.017 rows=15.00 loops=3)
+                                                  Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                                                  Buffers: shared hit=3
+                                                  ->  Seq Scan on genres g  (cost=0.00..1.15 rows=15 width=12) (actual time=0.013..0.014 rows=15.00 loops=3)
+                                                        Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=1529
+Planning Time: 1.944 ms
+Execution Time: 171.466 ms
+=== R09 after run 3 ===
+Sort  (cost=45887.41..45887.44 rows=15 width=48) (actual time=171.632..172.593 rows=15.00 loops=1)
+  Sort Key: (round(((100.0 * (count(*) FILTER (WHERE v.completed))::numeric) / (count(*))::numeric), 1)) DESC
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=10883
+  ->  Finalize GroupAggregate  (cost=45882.31..45887.11 rows=15 width=48) (actual time=171.617..172.586 rows=15.00 loops=1)
+        Group Key: g.genre_name
+        Buffers: shared hit=10880
+        ->  Gather Merge  (cost=45882.31..45886.51 rows=36 width=24) (actual time=171.605..172.572 rows=45.00 loops=1)
+              Workers Planned: 2
+              Workers Launched: 2
+              Buffers: shared hit=10880
+              ->  Sort  (cost=44882.29..44882.33 rows=15 width=24) (actual time=170.048..170.050 rows=15.00 loops=3)
+                    Sort Key: g.genre_name
+                    Sort Method: quicksort  Memory: 25kB
+                    Buffers: shared hit=10880
+                    Worker 0:  Sort Method: quicksort  Memory: 25kB
+                    Worker 1:  Sort Method: quicksort  Memory: 25kB
+                    ->  Partial HashAggregate  (cost=44881.85..44882.00 rows=15 width=24) (actual time=170.028..170.031 rows=15.00 loops=3)
+                          Group Key: g.genre_name
+                          Batches: 1  Memory Usage: 32kB
+                          Buffers: shared hit=10864
+                          Worker 0:  Batches: 1  Memory Usage: 32kB
+                          Worker 1:  Batches: 1  Memory Usage: 32kB
+                          ->  Parallel Hash Join  (cost=3193.80..35487.92 rows=1252523 width=9) (actual time=5.953..107.741 rows=876476.67 loops=3)
+                                Hash Cond: (v.title_id = tg.title_id)
+                                Buffers: shared hit=10864
+                                ->  Parallel Append  (cost=0.00..25002.22 rows=552833 width=5) (actual time=0.004..43.039 rows=442266.33 loops=3)
+                                      Buffers: shared hit=10531
+                                      ->  Parallel Seq Scan on viewing_activity_2026_03 v_3  (cost=0.00..3814.80 rows=133854 width=5) (actual time=0.004..14.941 rows=227551.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1807
+                                      ->  Parallel Seq Scan on viewing_activity_2026_01 v_1  (cost=0.00..3809.97 rows=133731 width=5) (actual time=0.004..14.083 rows=227343.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1804
+                                      ->  Parallel Seq Scan on viewing_activity_2026_05 v_5  (cost=0.00..3805.53 rows=133569 width=5) (actual time=0.003..4.674 rows=75689.00 loops=3)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1802
+                                      ->  Parallel Seq Scan on viewing_activity_2026_06 v_6  (cost=0.00..3684.79 rows=129319 width=5) (actual time=0.004..7.283 rows=109921.50 loops=2)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1745
+                                      ->  Parallel Seq Scan on viewing_activity_2026_04 v_4  (cost=0.00..3678.58 rows=129105 width=5) (actual time=0.002..13.743 rows=219479.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1742
+                                      ->  Parallel Seq Scan on viewing_activity_2026_02 v_2  (cost=0.00..3442.31 rows=120821 width=5) (actual time=0.002..12.819 rows=205395.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1630
+                                      ->  Parallel Seq Scan on viewing_activity_2026_07 v_7  (cost=0.00..2.07 rows=71 width=5) (actual time=0.004..0.011 rows=121.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                            Buffers: shared hit=1
+                                      ->  Parallel Seq Scan on viewing_activity_default v_8  (cost=0.00..0.00 rows=1 width=5) (actual time=0.000..0.000 rows=0.00 loops=1)
+                                            Filter: ((started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone) AND (started_at < '2027-01-01 00:00:00+05:30'::timestamp with time zone))
+                                ->  Parallel Hash  (cost=2573.15..2573.15 rows=49652 width=12) (actual time=5.909..5.910 rows=39722.00 loops=3)
+                                      Buckets: 131072  Batches: 1  Memory Usage: 6816kB
+                                      Buffers: shared hit=333
+                                      ->  Hash Join  (cost=1.63..2573.15 rows=49652 width=12) (actual time=0.038..3.649 rows=39722.00 loops=3)
+                                            Hash Cond: (tg.genre_id = g.genre_id)
+                                            Buffers: shared hit=333
+                                            ->  Parallel Index Only Scan using title_genres_pkey on title_genres tg  (cost=0.29..2404.65 rows=49652 width=8) (actual time=0.016..1.325 rows=39722.00 loops=3)
+                                                  Heap Fetches: 0
+                                                  Index Searches: 1
+                                                  Buffers: shared hit=330
+                                            ->  Hash  (cost=1.15..1.15 rows=15 width=12) (actual time=0.015..0.016 rows=15.00 loops=3)
+                                                  Buckets: 1024  Batches: 1  Memory Usage: 9kB
+                                                  Buffers: shared hit=3
+                                                  ->  Seq Scan on genres g  (cost=0.00..1.15 rows=15 width=12) (actual time=0.012..0.013 rows=15.00 loops=3)
+                                                        Buffers: shared hit=3
+Planning:
+  Buffers: shared hit=1529
+Planning Time: 1.899 ms
+Execution Time: 172.637 ms

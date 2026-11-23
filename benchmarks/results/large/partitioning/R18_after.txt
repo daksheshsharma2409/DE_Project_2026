@@ -1,0 +1,111 @@
+=== R18 after run 1 ===
+GroupAggregate  (cost=226424.36..266228.34 rows=1326799 width=45) (actual time=350.142..451.349 rows=28.00 loops=1)
+  Group Key: (date_trunc('month'::text, viewing_activity.started_at)), viewing_activity.device_type
+  Buffers: shared hit=10537, temp read=9184 written=9204
+  ->  Sort  (cost=226424.36..229741.36 rows=1326800 width=17) (actual time=347.957..394.433 rows=1326799.00 loops=1)
+        Sort Key: (date_trunc('month'::text, viewing_activity.started_at)), viewing_activity.device_type
+        Sort Method: external merge  Disk: 36744kB
+        Buffers: shared hit=10537, temp read=9184 written=9204
+        ->  Append  (cost=0.00..37066.99 rows=1326800 width=17) (actual time=0.005..175.308 rows=1326799.00 loops=1)
+              Buffers: shared hit=10531
+              ->  Seq Scan on viewing_activity_2026_01 viewing_activity_1  (cost=0.00..5214.15 rows=227343 width=17) (actual time=0.004..22.983 rows=227343.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1804
+              ->  Seq Scan on viewing_activity_2026_02 viewing_activity_2  (cost=0.00..4710.93 rows=205395 width=17) (actual time=0.004..20.590 rows=205395.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1630
+              ->  Seq Scan on viewing_activity_2026_03 viewing_activity_3  (cost=0.00..5220.27 rows=227551 width=17) (actual time=0.006..22.346 rows=227551.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1807
+              ->  Seq Scan on viewing_activity_2026_04 viewing_activity_4  (cost=0.00..5034.19 rows=219479 width=17) (actual time=0.004..21.588 rows=219479.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1742
+              ->  Seq Scan on viewing_activity_2026_05 viewing_activity_5  (cost=0.00..5208.00 rows=227067 width=17) (actual time=0.005..22.679 rows=227067.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1802
+              ->  Seq Scan on viewing_activity_2026_06 viewing_activity_6  (cost=0.00..5042.65 rows=219843 width=17) (actual time=0.009..21.932 rows=219843.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1745
+              ->  Seq Scan on viewing_activity_2026_07 viewing_activity_7  (cost=0.00..2.82 rows=121 width=17) (actual time=0.007..0.018 rows=121.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1
+              ->  Seq Scan on viewing_activity_default viewing_activity_8  (cost=0.00..0.00 rows=1 width=17) (actual time=0.007..0.007 rows=0.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+Planning:
+  Buffers: shared hit=1309 read=1
+Planning Time: 1.626 ms
+Execution Time: 457.368 ms
+=== R18 after run 2 ===
+GroupAggregate  (cost=226424.36..266228.34 rows=1326799 width=45) (actual time=349.313..438.459 rows=28.00 loops=1)
+  Group Key: (date_trunc('month'::text, viewing_activity.started_at)), viewing_activity.device_type
+  Buffers: shared hit=10537, temp read=9184 written=9204
+  ->  Sort  (cost=226424.36..229741.36 rows=1326800 width=17) (actual time=347.212..389.231 rows=1326799.00 loops=1)
+        Sort Key: (date_trunc('month'::text, viewing_activity.started_at)), viewing_activity.device_type
+        Sort Method: external merge  Disk: 36744kB
+        Buffers: shared hit=10537, temp read=9184 written=9204
+        ->  Append  (cost=0.00..37066.99 rows=1326800 width=17) (actual time=0.004..173.648 rows=1326799.00 loops=1)
+              Buffers: shared hit=10531
+              ->  Seq Scan on viewing_activity_2026_01 viewing_activity_1  (cost=0.00..5214.15 rows=227343 width=17) (actual time=0.004..22.914 rows=227343.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1804
+              ->  Seq Scan on viewing_activity_2026_02 viewing_activity_2  (cost=0.00..4710.93 rows=205395 width=17) (actual time=0.005..20.570 rows=205395.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1630
+              ->  Seq Scan on viewing_activity_2026_03 viewing_activity_3  (cost=0.00..5220.27 rows=227551 width=17) (actual time=0.008..22.217 rows=227551.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1807
+              ->  Seq Scan on viewing_activity_2026_04 viewing_activity_4  (cost=0.00..5034.19 rows=219479 width=17) (actual time=0.006..21.390 rows=219479.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1742
+              ->  Seq Scan on viewing_activity_2026_05 viewing_activity_5  (cost=0.00..5208.00 rows=227067 width=17) (actual time=0.006..22.301 rows=227067.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1802
+              ->  Seq Scan on viewing_activity_2026_06 viewing_activity_6  (cost=0.00..5042.65 rows=219843 width=17) (actual time=0.006..21.139 rows=219843.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1745
+              ->  Seq Scan on viewing_activity_2026_07 viewing_activity_7  (cost=0.00..2.82 rows=121 width=17) (actual time=0.004..0.014 rows=121.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1
+              ->  Seq Scan on viewing_activity_default viewing_activity_8  (cost=0.00..0.00 rows=1 width=17) (actual time=0.006..0.006 rows=0.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+Planning:
+  Buffers: shared hit=1310
+Planning Time: 1.507 ms
+Execution Time: 444.504 ms
+=== R18 after run 3 ===
+GroupAggregate  (cost=226424.36..266228.34 rows=1326799 width=45) (actual time=349.580..439.141 rows=28.00 loops=1)
+  Group Key: (date_trunc('month'::text, viewing_activity.started_at)), viewing_activity.device_type
+  Buffers: shared hit=10537, temp read=9184 written=9204
+  ->  Sort  (cost=226424.36..229741.36 rows=1326800 width=17) (actual time=347.443..389.627 rows=1326799.00 loops=1)
+        Sort Key: (date_trunc('month'::text, viewing_activity.started_at)), viewing_activity.device_type
+        Sort Method: external merge  Disk: 36744kB
+        Buffers: shared hit=10537, temp read=9184 written=9204
+        ->  Append  (cost=0.00..37066.99 rows=1326800 width=17) (actual time=0.005..173.557 rows=1326799.00 loops=1)
+              Buffers: shared hit=10531
+              ->  Seq Scan on viewing_activity_2026_01 viewing_activity_1  (cost=0.00..5214.15 rows=227343 width=17) (actual time=0.005..22.914 rows=227343.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1804
+              ->  Seq Scan on viewing_activity_2026_02 viewing_activity_2  (cost=0.00..4710.93 rows=205395 width=17) (actual time=0.005..20.449 rows=205395.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1630
+              ->  Seq Scan on viewing_activity_2026_03 viewing_activity_3  (cost=0.00..5220.27 rows=227551 width=17) (actual time=0.006..22.155 rows=227551.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1807
+              ->  Seq Scan on viewing_activity_2026_04 viewing_activity_4  (cost=0.00..5034.19 rows=219479 width=17) (actual time=0.006..21.377 rows=219479.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1742
+              ->  Seq Scan on viewing_activity_2026_05 viewing_activity_5  (cost=0.00..5208.00 rows=227067 width=17) (actual time=0.007..22.239 rows=227067.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1802
+              ->  Seq Scan on viewing_activity_2026_06 viewing_activity_6  (cost=0.00..5042.65 rows=219843 width=17) (actual time=0.008..21.345 rows=219843.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1745
+              ->  Seq Scan on viewing_activity_2026_07 viewing_activity_7  (cost=0.00..2.82 rows=121 width=17) (actual time=0.008..0.018 rows=121.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+                    Buffers: shared hit=1
+              ->  Seq Scan on viewing_activity_default viewing_activity_8  (cost=0.00..0.00 rows=1 width=17) (actual time=0.002..0.002 rows=0.00 loops=1)
+                    Filter: (started_at >= '2026-01-01 00:00:00+05:30'::timestamp with time zone)
+Planning:
+  Buffers: shared hit=1310
+Planning Time: 1.535 ms
+Execution Time: 445.198 ms

@@ -1,0 +1,54 @@
+=== R12 run 1 ===
+Sort  (cost=134.42..136.93 rows=1005 width=48) (actual time=2.204..2.204 rows=6.00 loops=1)
+  Sort Key: (date_trunc('month'::text, (cancelled_on)::timestamp with time zone))
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=4 read=34 written=15
+  ->  HashAggregate  (cost=64.20..84.30 rows=1005 width=48) (actual time=2.192..2.196 rows=6.00 loops=1)
+        Group Key: date_trunc('month'::text, (cancelled_on)::timestamp with time zone)
+        Batches: 1  Memory Usage: 65kB
+        Buffers: shared hit=1 read=34 written=15
+        ->  Index Only Scan using accounts_cancelled_on_idx on accounts  (cost=0.29..50.52 rows=1369 width=16) (actual time=0.327..1.561 rows=11787.00 loops=1)
+              Index Cond: ((cancelled_on >= '2026-01-01'::date) AND (cancelled_on < '2027-01-01'::date))
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=1 read=34 written=15
+Planning:
+  Buffers: shared hit=243 read=1
+Planning Time: 0.400 ms
+Execution Time: 2.234 ms
+=== R12 run 2 ===
+Sort  (cost=134.42..136.93 rows=1005 width=48) (actual time=1.814..1.815 rows=6.00 loops=1)
+  Sort Key: (date_trunc('month'::text, (cancelled_on)::timestamp with time zone))
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=38
+  ->  HashAggregate  (cost=64.20..84.30 rows=1005 width=48) (actual time=1.804..1.808 rows=6.00 loops=1)
+        Group Key: date_trunc('month'::text, (cancelled_on)::timestamp with time zone)
+        Batches: 1  Memory Usage: 65kB
+        Buffers: shared hit=35
+        ->  Index Only Scan using accounts_cancelled_on_idx on accounts  (cost=0.29..50.52 rows=1369 width=16) (actual time=0.027..1.223 rows=11787.00 loops=1)
+              Index Cond: ((cancelled_on >= '2026-01-01'::date) AND (cancelled_on < '2027-01-01'::date))
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=35
+Planning:
+  Buffers: shared hit=244
+Planning Time: 0.362 ms
+Execution Time: 1.843 ms
+=== R12 run 3 ===
+Sort  (cost=134.42..136.93 rows=1005 width=48) (actual time=1.659..1.659 rows=6.00 loops=1)
+  Sort Key: (date_trunc('month'::text, (cancelled_on)::timestamp with time zone))
+  Sort Method: quicksort  Memory: 25kB
+  Buffers: shared hit=38
+  ->  HashAggregate  (cost=64.20..84.30 rows=1005 width=48) (actual time=1.648..1.653 rows=6.00 loops=1)
+        Group Key: date_trunc('month'::text, (cancelled_on)::timestamp with time zone)
+        Batches: 1  Memory Usage: 65kB
+        Buffers: shared hit=35
+        ->  Index Only Scan using accounts_cancelled_on_idx on accounts  (cost=0.29..50.52 rows=1369 width=16) (actual time=0.026..1.083 rows=11787.00 loops=1)
+              Index Cond: ((cancelled_on >= '2026-01-01'::date) AND (cancelled_on < '2027-01-01'::date))
+              Heap Fetches: 0
+              Index Searches: 1
+              Buffers: shared hit=35
+Planning:
+  Buffers: shared hit=244
+Planning Time: 0.336 ms
+Execution Time: 1.685 ms

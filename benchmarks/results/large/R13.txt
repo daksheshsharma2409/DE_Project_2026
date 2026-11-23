@@ -1,0 +1,45 @@
+=== R13 run 1 ===
+Nested Loop Anti Join  (cost=0.85..67.76 rows=11 width=8) (actual time=0.005..0.005 rows=0.00 loops=1)
+  Buffers: shared hit=3
+  ->  Index Scan using episodes_position_unique on episodes e  (cost=0.42..45.56 rows=22 width=8) (actual time=0.005..0.005 rows=0.00 loops=1)
+        Index Cond: (title_id = 2523)
+        Index Searches: 1
+        Buffers: shared hit=3
+  ->  Index Only Scan using viewing_episode_idx on viewing_activity v  (cost=0.43..4.80 rows=11 width=4) (never executed)
+        Index Cond: (episode_id = e.episode_id)
+        Heap Fetches: 0
+        Index Searches: 0
+Planning:
+  Buffers: shared hit=329 read=5 written=1
+Planning Time: 0.551 ms
+Execution Time: 0.028 ms
+=== R13 run 2 ===
+Nested Loop Anti Join  (cost=0.85..67.76 rows=11 width=8) (actual time=0.005..0.005 rows=0.00 loops=1)
+  Buffers: shared hit=3
+  ->  Index Scan using episodes_position_unique on episodes e  (cost=0.42..45.56 rows=22 width=8) (actual time=0.005..0.005 rows=0.00 loops=1)
+        Index Cond: (title_id = 2523)
+        Index Searches: 1
+        Buffers: shared hit=3
+  ->  Index Only Scan using viewing_episode_idx on viewing_activity v  (cost=0.43..4.80 rows=11 width=4) (never executed)
+        Index Cond: (episode_id = e.episode_id)
+        Heap Fetches: 0
+        Index Searches: 0
+Planning:
+  Buffers: shared hit=334
+Planning Time: 0.522 ms
+Execution Time: 0.027 ms
+=== R13 run 3 ===
+Nested Loop Anti Join  (cost=0.85..67.76 rows=11 width=8) (actual time=0.005..0.005 rows=0.00 loops=1)
+  Buffers: shared hit=3
+  ->  Index Scan using episodes_position_unique on episodes e  (cost=0.42..45.56 rows=22 width=8) (actual time=0.005..0.005 rows=0.00 loops=1)
+        Index Cond: (title_id = 2523)
+        Index Searches: 1
+        Buffers: shared hit=3
+  ->  Index Only Scan using viewing_episode_idx on viewing_activity v  (cost=0.43..4.80 rows=11 width=4) (never executed)
+        Index Cond: (episode_id = e.episode_id)
+        Heap Fetches: 0
+        Index Searches: 0
+Planning:
+  Buffers: shared hit=334
+Planning Time: 0.488 ms
+Execution Time: 0.027 ms
